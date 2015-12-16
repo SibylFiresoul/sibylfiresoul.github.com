@@ -1,406 +1,209 @@
-
- <!DOCTYPE HTML>
-<html >
+	<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
-    <title>Hexo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="John Doe">
-    
+  <title>Hexo</title>
+  <meta name="author" content="John Doe">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+  
+  <meta property="og:site_name" content="Hexo"/>
 
-    
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  
+		<!-- favicon -->
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#009688">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+		<meta name="theme-color" content="#009688">
+		<!-- favicon end -->
+    <!-- <link href="/favicon.ico" rel="icon"> -->
+  
+
+  <!-- toc -->
+  <link rel="stylesheet" href="/libs/tocify/jquery.tocify.css" media="screen" type="text/css">
+
+  <!-- <link rel="stylesheet" href="/libs/bs/css/bootstrap.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" type="text/css">
+
+  <!-- material design -->
+	<!-- <link rel="stylesheet" href="/libs/bs-material/css/ripples.min.css" media="screen" type="text/css"> -->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/ripples.min.css" media="screen" type="text/css">
+  <!-- <link rel="stylesheet" href="/libs/bs-material/css/material.min.css" media="screen" type="text/css"> -->
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap-material/0.3.0/css/material.min.css" media="screen" type="text/css">
+
+  <link rel="stylesheet" href="/css/highlight.light.css" media="screen" type="text/css">
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+  <!-- 百度统计 -->
+  
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?392796d51567e848aebf813b65cb8656";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+
+  <!-- 谷歌统计 -->
+  
+
+  <script src="//apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/libs/jquery-2.0.3.min.js" type="text/javascript"><\/script>')</script>
+
 </head>
 
-  <body>
-    <header>
-      
-<div>
+ 	<body>
+	  <nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">菜单</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hexo</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="/" title="">
+                    <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/archives" title="">
+                    <i class="fa fa-list"></i>存档
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+	  <div class="container" >
+	    <div class="row">
+	<div class="col-md-8">
+	  <!-- index -->
+	  
+	  <!-- archives -->
+	  
+
+		<div class="content">
+			<!-- index -->
+		  
+				
+            <div class="index-item-wrapper">
+              <h3>
+                <a class="post-title" href="/2015/12/16/Fresco源码分析/">Fresco源码分析</a>
+              </h3>
+							<span class="post-time">2015-12-16</span>
+              <div class="excerpt"></div>
+              
+            </div>
+				
+				<!-- archives -->
+			  
+		</div>
+
+		<!-- pagination -->
+	  
+
 		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
-			</div>
+
+	</div>
+	<div class="col-md-4">
+		
 			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:yoursite.com">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main">
-
-   
+				<div id="sidebar">
+	 			
+	 					
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+      <li>
+        <a href="/2015/12/16/Fresco源码分析/"  > <i class="mdi-editor-insert-drive-file"></i>Fresco源码分析</a>
+      </li>
     
-      <a href="/2015/12/16/Fresco源码分析/" title="Fresco源码分析" itemprop="url">Fresco源码分析</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
-		
-  <p class="article-time">
-    <time datetime="2015-12-16T02:40:14.000Z" itemprop="datePublished"> 發表於 2015-12-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="Fresco_u6E90_u7801_u5206_u6790"><a href="#Fresco_u6E90_u7801_u5206_u6790" class="headerlink" title="Fresco源码分析"></a>Fresco源码分析</h1><p>Fresco的MVC模型：<br>M -&gt; DraweeHierarchy  保存和管理图像层次；<br>V -&gt; DraweeView          显示DraweeHierarchy的顶层图像；<br>C -&gt; DraweeController 管理其他组件，设置视图层次；<br>DraweeHolder：controller和hierarchy的持有类，DraweeView 通过此类和controller和hierarchy交互，起到解耦作用。</p>
-<p>DraweeHierarchy ：Fresco提供了诸如占位图（加载中，加载失败显示的图片），进度条，渐进式JPEG图，多图请求及图片复用等效果，也就是说根据图片加载过程中的不同状态要显示不同效果的图片，所以需要图像的分层管理。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">DraweeHierarchy</span> &#123;</span><br><span class="line">  <span class="function">Drawable <span class="title">getTopLevelDrawable</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>DraweeHierarchy代表了一个Drawee的层次，它内部维持了一个树状数据结构，DraweeHierarchy对外屏蔽了一切具体细节，只提供the top level drawable用于DraweeView的动态显示。</p>
-<p>SettableDraweeHierarchy：继承自DraweeHierarchy并提供了一些基本的功能。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SettableDraweeHierarchy</span> <span class="keyword">extends</span> <span class="title">DraweeHierarchy</span> </span>&#123;</span><br><span class="line">  <span class="comment">//将图层重置到初始状态</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">//设置目标显示图片</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setImage</span><span class="params">(Drawable drawable, <span class="keyword">float</span> progress, <span class="keyword">boolean</span> immediate)</span></span>;</span><br><span class="line">  <span class="comment">//设置进度条的进度</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setProgress</span><span class="params">(<span class="keyword">float</span> progress, <span class="keyword">boolean</span> immediate)</span></span>;</span><br><span class="line">  <span class="comment">//设置加载失败时的图片</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setFailure</span><span class="params">(Throwable throwable)</span></span>;</span><br><span class="line">  <span class="comment">//设置加载失败，但用户点击该图片可以重新加载</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setRetry</span><span class="params">(Throwable throwable)</span></span>;</span><br><span class="line">  <span class="comment">//设置改图片覆盖已有的图层</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setControllerOverlay</span><span class="params">(Drawable drawable)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上方法只能由controllers调用！</p>
-<p>GenericDraweeHierarchy ：实现了SettableDraweeHierarchy的基本方法，是负责装载每个图层信息的载体。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericDraweeHierarchy</span> <span class="keyword">implements</span> <span class="title">SettableDraweeHierarchy</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/pic01.png" style="width: 500px;"><br>主要有顶级图层，占位符图层，目标显示图层，重新加载图层，显示失败图层，    进度条图层，控制覆盖图层。这些图层的代码位于drawable文件夹。<br>GenericDraweeHierarchy 的构建是通过GenericDraweeHierarchyBuilder完成的，这是典型的builder设计模式。<br>在GenericDraweeHierarchyBuilder可以通过一系列set方法设置诸如setPlaceholderImage，setFailureImage，setRetryImage，setProgressBarImage，setBackground（setBackgrounds），setOverlay(setOverlays),setPressedStateOverlay设置以上图层。<br>GenericDraweeHierarchy在初始化的时候会从GenericDraweeHierarchyBuilder提取出这些设置值。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> numLayers = <span class="number">0</span>;<span class="comment">//图层数</span></span><br></pre></td></tr></table></figure>
-<p>经过如下分支：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//backgrounds</span><br><span class="line">int numBackgrounds = (builder.getBackgrounds() != null) ? builder.getBackgrounds().size() : 0<span class="comment">;</span></span><br><span class="line">int backgroundsIndex = numLayers<span class="comment">;</span></span><br><span class="line">numLayers += numBackgrounds<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">//placeholder image branch</span><br><span class="line">Drawable placeholderImageBranch = builder.getPlaceholderImage()<span class="comment">;</span></span><br><span class="line">if (placeholderImageBranch == null) &#123;</span><br><span class="line">  placeholderImageBranch = getEmptyPlaceholderDrawable()<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">placeholderImageBranch = maybeApplyRoundingBitmapOnly(</span><br><span class="line">    mRoundingParams,</span><br><span class="line">    mResources,</span><br><span class="line">    placeholderImageBranch)<span class="comment">;</span></span><br><span class="line">placeholderImageBranch = maybeWrapWithScaleType(</span><br><span class="line">    placeholderImageBranch,</span><br><span class="line">    builder.getPlaceholderImageScaleType())<span class="comment">;</span></span><br><span class="line">mPlaceholderImageIndex = numLayers++<span class="comment">;</span></span><br><span class="line">以下分支代码略</span><br></pre></td></tr></table></figure>
-<p>将对应的图层依次序存储在数组layers中：<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Drawable<span class="string">[]</span> layers = new Drawable<span class="string">[numLayers]</span>;</span><br><span class="line">   if (numBackgrounds &gt; <span class="number">0</span>) &#123;</span><br><span class="line">     int index = <span class="number">0</span>;</span><br><span class="line">     for (Drawable background : builder.getBackgrounds()) &#123;</span><br><span class="line">       layers<span class="string">[backgroundsIndex + index++]</span> =</span><br><span class="line">           maybeApplyRoundingBitmapOnly(mRoundingParams, mResources, background);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   layers<span class="string">[mPlaceholderImageIndex]</span> = placeholderImageBranch;</span><br><span class="line">   layers<span class="string">[mActualImageIndex]</span> = actualImageBranch;</span><br><span class="line">   layers<span class="string">[mProgressBarImageIndex]</span> = progressBarImageBranch;</span><br><span class="line">   layers<span class="string">[mRetryImageIndex]</span> = retryImageBranch;</span><br><span class="line">   layers<span class="string">[mFailureImageIndex]</span> = failureImageBranch;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包装成FadeDrawable</span></span><br><span class="line">mFadeDrawable = <span class="keyword">new</span> FadeDrawable(layers);</span><br><span class="line">mFadeDrawable.setTransitionDuration(builder.getFadeDuration());</span><br><span class="line"></span><br><span class="line"><span class="comment">//是否圆角处理</span></span><br><span class="line">Drawable maybeRoundedDrawable =</span><br><span class="line">    maybeWrapWithRoundedOverlayColor(mRoundingParams, mFadeDrawable);</span><br><span class="line"></span><br><span class="line"><span class="comment">//顶层图片处理</span></span><br><span class="line">mTopLevelDrawable = <span class="keyword">new</span> RootDrawable(maybeRoundedDrawable);</span><br><span class="line">mTopLevelDrawable.mutate();</span><br></pre></td></tr></table></figure>
-<p>FadeDrawable继承自ArrayDrawable，ArrayDrawable包含了一个Drawables（layers）的数组,会按照数组的顺序进行绘制，角标最大的元素会被绘制在最上层。</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mLayers.length; i++) &#123;</span><br><span class="line">      Drawable drawable = mLayers[i];</span><br><span class="line">      <span class="keyword">if</span> (drawable != <span class="keyword">null</span>) &#123;</span><br><span class="line">        drawable.draw(canvas);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>ArrayDrawable还实现了TransformCallback, TransformAwareDrawable 接口，用以获取父图层的变换矩阵。<br>FadeDrawable还提供了显示/隐藏图层和渐变显示功能：<br>setTransitionDuration(int durationMs) 设置隐藏/显示图层渐变动画时间。<br>updateAlphas根据经过和持续时间计算当前的透明度。<br>fadeInLayer(int index) 显示指定图层。<br>fadeOutLayer(int index) 隐藏指定图层。<br>fadeInAllLayers() 显示所有图层。<br>fadeOutAllLayers() 隐藏所有图层。<br>fadeToLayer(int index) 显示指定图层同时隐藏其他图层。<br>fadeUpToLayer(int index) 隐藏数组下标&lt;=index的图层。</p>
-<p>RootDrawable继承自ForwardingDrawable，并实现了VisibilityAwareDrawable接口，用以在自身可见度改变的时候的通知函数（onVisibilityChange(boolean visible)）和在自身绘制时通知回调(onDraw())。<br>ForwardingDrawable提供getCurrent()回去当前的容器：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function">Drawable <span class="title">getCurrent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mCurrentDelegate;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>其设计哲学是 ，有助于重用，就像安卓原生的DrawableContainer, LevelListDrawable类那样。</p>
-<p>DraweeView用于显示DraweeHierarchy。需要先设置hierarchy和controller。</p>
-<p>void init(Context context) 初始化DraweeHolder；<br>void setHierarchy(DH hierarchy) 设置图层树并显示top level drawable<br>void setController(@Nullable DraweeController draweeController) 设置DraweeController并显示top level drawable<br>Drawable getTopLevelDrawable() 获取top level drawable；<br>View中的onAttachedToWindow()、 onDetachedFromWindow()、 onStartTemporaryDetach()、 onFinishTemporaryDetach() 四个回调函数，提供当视图被绑定/解绑到指定布局上时的回调函数，它们会触发DraweeHolder的onDetach()或onAttach()；</p>
-<p>设置目标图片是Controller的行为，DraweeView并不支持ImageView的setImageXxx, setScaleType和类似的方法。只有把DraweeView当作是原生的ImageView时才能调用DraweeView的如下方法：<br>setImageDrawable(Drawable drawable)<br>setImageBitmap(Bitmap bm)<br>setImageResource(int resId)<br>setImageURI(Uri uri)<br>这是并没有使用到Fresco的缓存和加载机制。</p>
-<p>DraweeHolder是包含了controller和hierarchy的持有类。DraweeView的所有方法和操作都是调用了DraweeHolder的相关方法实现的。</p>
-<p>void setHierarchy(DH hierarchy)在构造方法和DraweeView.setHierarchy中被调用，将DraweeHierarchy传给持有的DraweeControlle。<br>setController(@Nullable DraweeController draweeController)无条件解绑旧的Controller，并将旧DraweeController的DraweeHierarchy设置为null，并调用DraweeController.onDetach()将它变为解除绑定状态；将持有的DraweeHierarchy赋给新传入的DraweeController并调用DraweeController.onAttach()让它变为绑定状态。</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setController</span><span class="params">(@Nullable DraweeController draweeController)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">boolean</span> wasAttached = mIsControllerAttached;</span><br><span class="line">   <span class="keyword">if</span> (wasAttached) &#123;</span><br><span class="line">     detachController();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Clear the old controller</span></span><br><span class="line">   <span class="keyword">if</span> (mController != <span class="keyword">null</span>) &#123;</span><br><span class="line">     mEventTracker.recordEvent(Event.ON_CLEAR_OLD_CONTROLLER);</span><br><span class="line">     mController.setHierarchy(<span class="keyword">null</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   mController = draweeController;</span><br><span class="line">   <span class="keyword">if</span> (mController != <span class="keyword">null</span>) &#123;</span><br><span class="line">     mEventTracker.recordEvent(Event.ON_SET_CONTROLLER);</span><br><span class="line">     mController.setHierarchy(mHierarchy);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     mEventTracker.recordEvent(Event.ON_CLEAR_CONTROLLER);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (wasAttached) &#123;</span><br><span class="line">     attachController();</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>mController.setHierarchy(mHierarchy);之后发生了什么会在后文中记述。</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GenericDraweeView <span class="keyword">extends</span> DraweeView&lt;GenericDraweeHierarchy&gt;</span><br></pre></td></tr></table></figure>
-<p>GenericDraweeView就是使用GenericDraweeHierarchy图层树的视图，GenericDraweeHierarchy图层的属性是从XML文件中获取到的。<br>这些属性如下：</p>
-<ul>
-<li>Fading animation parameters:<ul>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_fadeDuration</li>
-<li>Images &amp; scale types parameters:</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_viewAspectRatio</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_placeholderImage</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_placeholderImageScaleType</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_retryImage</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_retryImageScaleType</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_failureImage</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_failureImageScaleType</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_progressBarImage</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_progressBarImageScaleType</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_progressBarAutoRotateInterval</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_actualImageScaleType</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_backgroundImage</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_overlayImage</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_pressedStateOverlayImage</li>
-<li>Rounding parameters:</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundAsCircle</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundedCornerRadius</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundTopLeft</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundTopRight</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundBottomRight</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundBottomLeft</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundWithOverlayColor</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundingBorderWidth</li>
-<li>@attr ref com.facebook.R.styleable#GenericDraweeView_roundingBorderColor<br>aspectRatio 图片的长宽比；</li>
-</ul>
-</li>
-</ul>
-<p>在inflateHierarchy方法中从XML文件中读出相关属性，并将这些属性通过GenericDraweeHierarchyBuilder完成构造，最后通过setHierarchy(builder.build())传递给GenericDraweeView。</p>
-<p> 而 SimpleDraweeView继承自GenericDraweeView，内部提供了DraweeController的简单实现。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Supplier</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  T <span class="keyword">get</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Supplier&lt;? <span class="keyword">extends</span> SimpleDraweeControllerBuilder&gt; sDraweeControllerBuilderSupplier;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> initialize(</span><br><span class="line">      Supplier&lt;? <span class="keyword">extends</span> SimpleDraweeControllerBuilder&gt; draweeControllerBuilderSupplier) &#123;</span><br><span class="line">    sDraweeControllerBuilderSupplier = draweeControllerBuilderSupplier;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> init() &#123;</span><br><span class="line">    <span class="keyword">if</span> (isInEditMode()) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Preconditions.checkNotNull(</span><br><span class="line">        sDraweeControllerBuilderSupplier,</span><br><span class="line">        <span class="string">"SimpleDraweeView was not initialized!"</span>);</span><br><span class="line">    mSimpleDraweeControllerBuilder = sDraweeControllerBuilderSupplier.<span class="keyword">get</span>();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>setImageURI方法：<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void <span class="built_in">set</span>ImageURI(Uri uri, @Nullable Object callerContext) &#123;</span><br><span class="line">  DraweeController controller = mSimpleDraweeControllerBuilder</span><br><span class="line">      .<span class="built_in">set</span>CallerContext(callerContext)</span><br><span class="line">      .<span class="built_in">set</span>Uri(uri)</span><br><span class="line">      .<span class="built_in">set</span>OldController(getController())</span><br><span class="line">      .build();</span><br><span class="line">  <span class="built_in">set</span>Controller(controller);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>下面到了controller的部分：<br>The view forwards events to the controller. The controller controls its hierarchy based on those events.<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">DraweeController</span> &#123;</span><br><span class="line">  <span class="function">DraweeHierarchy <span class="title">getHierarchy</span>(<span class="params"></span>)</span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setHierarchy</span>(<span class="params">@Nullable DraweeHierarchy hierarchy</span>)</span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onAttach</span>(<span class="params"></span>)</span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onDetach</span>(<span class="params"></span>)</span>;</span><br><span class="line">  <span class="function">boolean <span class="title">onTouchEvent</span>(<span class="params">MotionEvent <span class="keyword">event</span></span>)</span>;</span><br><span class="line">  <span class="function">Animatable <span class="title">getAnimatable</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractDraweeController</span>&lt;<span class="title">T</span>, <span class="title">INFO</span>&gt; <span class="keyword">implements</span></span><br><span class="line">    <span class="title">DraweeController</span>,</span><br><span class="line">    <span class="title">DeferredReleaser</span>.<span class="title">Releasable</span>,</span><br><span class="line">    <span class="title">GestureDetector</span>.<span class="title">ClickListener</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>DraweeView在onAttachedToWindow()方法中调用mDraweeHolder.onAttach();该方法内部调用 mController.onAttach();</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mController != <span class="literal">null</span> &amp;&amp;</span><br><span class="line">       mController.getHierarchy() != <span class="literal">null</span>) &#123;</span><br><span class="line">     mController.onAttach();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>会先判断是否已经给mController设置了hierarchy。<br>下面我们看AbstractDraweeController的onAttach()方法内部的submitRequest()方法。</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">submitRequest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  getControllerListener().onSubmit(mId, mCallerContext);</span><br><span class="line">  mSettableDraweeHierarchy.setProgress(<span class="number">0</span>, <span class="keyword">true</span>);</span><br><span class="line">  mIsRequestSubmitted = <span class="keyword">true</span>;</span><br><span class="line">  mHasFetchFailed = <span class="keyword">false</span>;</span><br><span class="line">  mDataSource = getDataSource();</span><br><span class="line">  <span class="keyword">final</span> String id = mId;</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">boolean</span> wasImmediate = mDataSource.hasResult();</span><br><span class="line">  <span class="keyword">final</span> DataSubscriber&lt;T&gt; dataSubscriber =</span><br><span class="line">      <span class="keyword">new</span> BaseDataSubscriber&lt;T&gt;() &#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onNewResultImpl</span><span class="params">(DataSource&lt;T&gt; dataSource)</span> </span>&#123;</span><br><span class="line">          <span class="comment">// isFinished must be obtained before image, otherwise we might set intermediate result</span></span><br><span class="line">          <span class="comment">// as final image.</span></span><br><span class="line">          <span class="keyword">boolean</span> isFinished = dataSource.isFinished();</span><br><span class="line">          <span class="keyword">float</span> progress = dataSource.getProgress();</span><br><span class="line">          T image = dataSource.getResult();</span><br><span class="line">          <span class="keyword">if</span> (image != <span class="keyword">null</span>) &#123;</span><br><span class="line">            onNewResultInternal(id, dataSource, image, progress, isFinished, wasImmediate);</span><br><span class="line">          &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(isFinished)</span> </span>&#123;</span><br><span class="line">            onFailureInternal(id, dataSource, <span class="keyword">new</span> NullPointerException(), <span class="comment">/* isFinished */</span> <span class="keyword">true</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onFailureImpl</span><span class="params">(DataSource&lt;T&gt; dataSource)</span> </span>&#123;</span><br><span class="line">          onFailureInternal(id, dataSource, dataSource.getFailureCause(), <span class="comment">/* isFinished */</span> <span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(DataSource&lt;T&gt; dataSource)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">boolean</span> isFinished = dataSource.isFinished();</span><br><span class="line">          <span class="keyword">float</span> progress = dataSource.getProgress();</span><br><span class="line">          onProgressUpdateInternal(id, dataSource, progress, isFinished);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">  mDataSource.subscribe(dataSubscriber, mUiThreadImmediateExecutor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>发现这是观察者设计模式，DataScriber订阅了DataSource的信息，在不同的回调函数中onNewResultImpl，onFailureImpl，onProgressUpdate对DraweeHierarchy做出相应的处理。<br>下面是图片加载失败情况下的主要代码：</p>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isFinished) &#123;</span><br><span class="line">     mDataSource = <span class="literal">null</span>;</span><br><span class="line">     mHasFetchFailed = <span class="literal">true</span>;</span><br><span class="line">     <span class="keyword">if</span> (mRetainImageOnFailure &amp;&amp; mDrawable != <span class="literal">null</span>) &#123;</span><br><span class="line">       mSettableDraweeHierarchy.setImage(mDrawable, <span class="number">1</span>f, <span class="literal">true</span>);</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shouldRetryOnTap()) &#123;</span><br><span class="line">       mSettableDraweeHierarchy.setRetry(throwable);</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       mSettableDraweeHierarchy.setFailure(throwable);</span><br><span class="line">     &#125;</span><br><span class="line">     getControllerListener().onFailure(<span class="built_in">mId</span>, throwable);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     logMessageAndFailure(<span class="string">"intermediate_failed @ onFailure"</span>, throwable);</span><br><span class="line">     getControllerListener().onIntermediateImageFailed(<span class="built_in">mId</span>, throwable);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>AbstractDraweeController是通过AbstractDraweeControllerBuilder的build()方法构建的。<br>其重要方法还有Supplier<datasource<image>&gt; obtainDataSourceSupplier()，<br>获取被controller使用的the top-level数据源的supplier 。</datasource<image></p>
-<p>参考文章：<a href="https://github.com/desmond1121/Fresco-Source-Analysis" target="_blank" rel="external">https://github.com/desmond1121/Fresco-Source-Analysis</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
+  </ul>
 </div>
 
 
-
-
-<div class="comments-count">
+	 				
+	 					
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
 	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
-<aside class="clearfix">
-
-  
-
-
-  
-
-  
-
-  <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
-    <ul>
-        
-          <li>
-            
-            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-  
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
-</div>
-
-  <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
-</div>
-
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
+		<li> <a href="https://github.com/SibylFiresoul" title="我的github" target="_blank"> <i class="mdi-action-launch"></i> GitHub</a></li>
 	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
+		<li> <a href="http://www.douban.com/people/firesoul/" title="我的豆瓣" target="_blank"> <i class="mdi-action-launch"></i> 豆瓣</a></li>
 	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
+	</ul>
+</div>
+
+
+	 				
+	 			</div>
 			
 		
-
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
-		
-		<a href="/about" target="_blank" title="John Doe">John Doe</a>
-		
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-        
-    }
-  });
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
-
-
-
-<!-- Analytics Begin -->
-
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
-	<script src="/js/totop.js"></script>
 
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
+</div>
 
 
-<!-- MathJax End -->
+			<footer>
+				
 
-<!-- Tiny_search Begin -->
+<p>
+  由 <a href="https://hexo.io">hexo</a> 强力驱动 | 搭载 <a href="https://github.com/wayou/hexo-theme-material">material</a> 主题
+</p>
+<p>
+  &copy; 2015 <a href="http://yoursite.com"> John Doe </a>
+</p>
+<a id="gotop" href="#" title="back to top"><i class="mdi-hardware-keyboard-arrow-up"></i></a>
 
-<!-- Tiny_search End -->
+			</footer>
+	  </div>
 
-  </body>
- </html>
+		<!-- <script src="/libs/bs/js/bootstrap.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script>(typeof $().modal == 'function')|| document.write('<script src="/libs/bs/js/bootstrap.min.js" type="text/javascript"><\/script>')</script>
+
+		<!-- material design -->
+		<!-- <script src="/libs/bs-material/js/ripples.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/ripples.min.js"></script>
+		<!-- <script src="/libs/bs-material/js/material.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/bootstrap-material/0.3.0/js/material.min.js"></script>
+		<!-- toc -->
+		<!-- <script src="/libs/tocify/jquery-ui.min.js"></script> -->
+		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="/libs/tocify/jquery.tocify.custom.js"></script>
+
+		<script src="/js/main.js"></script>
+
+	</body>
+</html>
