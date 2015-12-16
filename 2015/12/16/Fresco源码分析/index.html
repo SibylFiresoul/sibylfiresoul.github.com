@@ -5,17 +5,17 @@
   
   <title>Fresco源码分析 | Firesoul&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="description: “Fresco源码解析第一部分”Fresco源码分析Fresco的MVC模型：M -&amp;gt; DraweeHierarchy  保存和管理图像层次；V -&amp;gt; DraweeView          显示DraweeHierarchy的顶层图像；C -&amp;gt; DraweeController 管理其他组件，设置视图层次；DraweeHolder：controller">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fresco源码分析">
 <meta property="og:url" content="http://yoursite.com/2015/12/16/Fresco源码分析/index.html">
 <meta property="og:site_name" content="Firesoul's Blog">
-<meta property="og:description">
+<meta property="og:description" content="description: “Fresco源码解析第一部分”Fresco源码分析Fresco的MVC模型：M -&amp;gt; DraweeHierarchy  保存和管理图像层次；V -&amp;gt; DraweeView          显示DraweeHierarchy的顶层图像；C -&amp;gt; DraweeController 管理其他组件，设置视图层次；DraweeHolder：controller">
 <meta property="og:image" content="http://yoursite.com/images/pic01.png">
-<meta property="og:updated_time" content="2015-12-16T08:22:25.893Z">
+<meta property="og:updated_time" content="2015-12-16T08:47:16.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fresco源码分析">
-<meta name="twitter:description">
+<meta name="twitter:description" content="description: “Fresco源码解析第一部分”Fresco源码分析Fresco的MVC模型：M -&amp;gt; DraweeHierarchy  保存和管理图像层次；V -&amp;gt; DraweeView          显示DraweeHierarchy的顶层图像；C -&amp;gt; DraweeController 管理其他组件，设置视图层次；DraweeHolder：controller">
   
     <link rel="alternative" href="/atom.xml" title="Firesoul&#39;s Blog" type="application/atom+xml">
   
@@ -44,7 +44,7 @@
 		</hgroup>
 
 		
-		<p class="header-subtitle">hauntedlove</p>
+		<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
 		
 				
 
@@ -167,7 +167,7 @@
 			  <h1 class="header-author"><a href="/" title="回到主页">Firesoul</a></h1>
 			</hgroup>
 			
-			<p class="header-subtitle">hauntedlove</p>
+			<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
 			
 			<nav class="header-menu">
 				<ul>
@@ -229,10 +229,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
-<ul>
-<li><a id="more"></a>
-<the rest="" of="" contents="" |="" 余下全文=""><h1 id="Fresco_u6E90_u7801_u5206_u6790"><a href="#Fresco_u6E90_u7801_u5206_u6790" class="headerlink" title="Fresco源码分析"></a>Fresco源码分析</h1>Fresco的MVC模型：<br>M -&gt; DraweeHierarchy  保存和管理图像层次；<br>V -&gt; DraweeView          显示DraweeHierarchy的顶层图像；<br>C -&gt; DraweeController 管理其他组件，设置视图层次；<br>DraweeHolder：controller和hierarchy的持有类，DraweeView 通过此类和controller和hierarchy交互，起到解耦作用。</the></li>
+        <ul>
+<li>description: “Fresco源码解析第一部分”<h1 id="Fresco_u6E90_u7801_u5206_u6790"><a href="#Fresco_u6E90_u7801_u5206_u6790" class="headerlink" title="Fresco源码分析"></a>Fresco源码分析</h1>Fresco的MVC模型：<br>M -&gt; DraweeHierarchy  保存和管理图像层次；<br>V -&gt; DraweeView          显示DraweeHierarchy的顶层图像；<br>C -&gt; DraweeController 管理其他组件，设置视图层次；<br>DraweeHolder：controller和hierarchy的持有类，DraweeView 通过此类和controller和hierarchy交互，起到解耦作用。</li>
 </ul>
 <p>DraweeHierarchy ：Fresco提供了诸如占位图（加载中，加载失败显示的图片），进度条，渐进式JPEG图，多图请求及图片复用等效果，也就是说根据图片加载过程中的不同状态要显示不同效果的图片，所以需要图像的分层管理。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">DraweeHierarchy</span> &#123;</span><br><span class="line">  <span class="function">Drawable <span class="title">getTopLevelDrawable</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>DraweeHierarchy代表了一个Drawee的层次，它内部维持了一个树状数据结构，DraweeHierarchy对外屏蔽了一切具体细节，只提供the top level drawable用于DraweeView的动态显示。</p>
@@ -314,7 +312,7 @@
   <p><span>本文标题:</span><a href="/2015/12/16/Fresco源码分析/">Fresco源码分析</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Firesoul 的个人博客">Firesoul</a></p>
   <p><span>发布时间:</span>2015年12月16日 - 10时40分</p>
-  <p><span>最后更新:</span>2015年12月16日 - 16时22分</p>
+  <p><span>最后更新:</span>2015年12月16日 - 16时47分</p>
   <p>
     <span>原始链接:</span><a class="post-url" href="/2015/12/16/Fresco源码分析/" title="Fresco源码分析">http://yoursite.com/2015/12/16/Fresco源码分析/</a>
     <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/12/16/Fresco源码分析/　　作者: Firesoul" title="点击复制文章链接">
