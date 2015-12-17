@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Fresco源码分析二 | Firesoul&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Fresco源码分析第二部分：DataSource，DataSubscriber">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fresco源码分析二">
+<meta property="og:url" content="http://yoursite.com/2015/12/18/Fresco源码分析二/index.html">
+<meta property="og:site_name" content="Firesoul's Blog">
+<meta property="og:description" content="Fresco源码分析第二部分：DataSource，DataSubscriber">
+<meta property="og:updated_time" content="2015-12-17T16:07:16.764Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fresco源码分析二">
+<meta name="twitter:description" content="Fresco源码分析第二部分：DataSource，DataSubscriber">
+  
+    <link rel="alternative" href="/atom.xml" title="Firesoul&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Firesoul</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+		
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Fresco/" style="font-size: 10px;">Fresco</a> <a href="/tags/源码分析/" style="font-size: 10px;">源码分析</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Something in your eyes, whispers words of last good-bye</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Firesoul</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Firesoul</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Fresco源码分析二" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/18/Fresco源码分析二/" class="article-date">
+  	<time datetime="2015-12-17T16:04:39.000Z" itemprop="datePublished">2015-12-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Fresco源码分析二
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fresco/">Fresco</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>下面分析有关DataSource，DataSubscriber的部分：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DataSource</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isClosed</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="annotation">@Nullable</span> <span class="function">T <span class="title">getResult</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">hasResult</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">isFinished</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">hasFailed</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="annotation">@Nullable</span> <span class="function">Throwable <span class="title">getFailureCause</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">float</span> <span class="title">getProgress</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">close</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(DataSubscriber&lt;T&gt; dataSubscriber, Executor executor)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>DataSource是什么？注释中说：An alternative to Java Futures for the image pipeline<br>Image pipeline 负责完成加载图像，变成Android设备可呈现的形式所要做的每个事情。（Fresco文档）<br>Futures代表了异步运算的结果。主要有三种功能：<br>1）判断任务是否完成；2）能够中断任务；3）能够获取任务执行结果。<br>可见DataSource中存在着对应这3个基本功能的方法。<br>不同的是Futures只能返回一个结果，而DataSource可以发布一系列的结果。<br>一个最好的例子就是在解码渐进式图片的时候，DataSource在最终图片解码完成之前，发布了一系列中间的图片解码效果。<br>所以，@Nullable T getResult()方法返回的是最新的异步计算结果，连续地调用这个函数可能回返回不同的结果。</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractDataSource</span><span class="inheritance">&lt;<span class="parent">T</span></span>&gt; <span class="title">implements</span> <span class="title">DataSource</span><span class="inheritance">&lt;<span class="parent">T</span></span>&gt; &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>AbstractDataSource首先具有一个描述数据源的枚举状态类：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">enum</span> <span class="title">DataSourceStatus</span> &#123;</span></span><br><span class="line"> /<span class="regexp">/ data source has not finished yet</span><br><span class="line">    IN_PROGRESS,</span><br><span class="line"></span><br><span class="line"> /</span><span class="regexp">/ data source has finished with success</span><br><span class="line">    SUCCESS,</span><br><span class="line"></span><br><span class="line">/</span><span class="regexp">/ data source has finished with failure</span><br><span class="line">    FAILURE,</span><br><span class="line">  &#125;</span></span><br></pre></td></tr></table></figure>
+<p>其他的数据源继承该类就可以同样管理自己的状态，并在状态改变的时候通知listeners。<br>其次，内部管理着一个ConcurrentLinkedQueue的实例mSubscribers，<br><code>private final ConcurrentLinkedQueue&lt;Pair&lt;DataSubscriber&lt;T&gt;, Executor&gt;&gt;</code> mSubscribersConcurrentLinkedQueue是一个无边界的线程安全的基于链接节点的队列。该队列元素具有FIFO原则。当许多线程共享访问一个公共 collection 时，ConcurrentLinkedQueue 是一个恰当的选择。此队列不允许 null 元素。<br>在subscribe()方法中：<br>注意shouldNotify 标志位<br><figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">synchronized(this) &#123;</span><br><span class="line">      <span class="keyword">if</span> (mIsClosed) &#123;</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (mDataSourceStatus == <span class="type">DataSourceStatus</span>.<span class="type">IN_PROGRESS</span>) &#123;</span><br><span class="line">        mSubscribers.add(<span class="type">Pair</span>.create(dataSubscriber, executor));</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      shouldNotify = hasResult<span class="literal">()</span> || isFinished<span class="literal">()</span> || wasCancelled<span class="literal">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (shouldNotify) &#123;</span><br><span class="line">      notifyDataSubscriber(dataSubscriber, executor, hasFailed<span class="literal">()</span>, wasCancelled<span class="literal">()</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>以下代码可以清晰的看到DataSource和dataSubscriber的一对多关系，还有DataSource自身不同状态对应着dataSubscriber的不同回调函数的关系，所以，controller内部管理一个dataSubscriber继而对Hierarchy做出相应的处理。<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">notifyDataSubscriber</span><span class="params">(</span><br><span class="line">      <span class="keyword">final</span> DataSubscriber&lt;T&gt; dataSubscriber,</span><br><span class="line">      <span class="keyword">final</span> Executor executor,</span><br><span class="line">      <span class="keyword">final</span> <span class="keyword">boolean</span> isFailure,</span><br><span class="line">      <span class="keyword">final</span> <span class="keyword">boolean</span> isCancellation)</span> </span>&#123;</span><br><span class="line">    executor.execute(</span><br><span class="line">        <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">          <span class="annotation">@Override</span></span><br><span class="line">          <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (isFailure) &#123;</span><br><span class="line">              dataSubscriber.onFailure(AbstractDataSource.<span class="keyword">this</span>);</span><br><span class="line">            &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(isCancellation)</span> </span>&#123;</span><br><span class="line">              dataSubscriber.onCancellation(AbstractDataSource.<span class="keyword">this</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              dataSubscriber.onNewResult(AbstractDataSource.<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>而下面这个通知所有的DataSubscriber的方法，是在setResult(),setFailure(),close()中调用。<br>一旦有了最终的结果，无论是什么，都将通知所有的订阅者。<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">notifyDataSubscribers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">boolean</span> isFailure = hasFailed();</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">boolean</span> isCancellation = wasCancelled();</span><br><span class="line">  <span class="keyword">for</span> (Pair&lt;DataSubscriber&lt;T&gt;, Executor&gt; pair : mSubscribers) &#123;</span><br><span class="line">    notifyDataSubscriber(pair.first, pair.second, isFailure, isCancellation);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此外，还有FirstAvailableDataSourceSupplier提供的FirstAvailableDataSource，提供一个可以首次获取到可用结果的数据源。内部维护着一个List<supplier<datasource<t>&gt;&gt; ，按次序获取，只有当前的数据源失败了，或者没有获取到结果，才尝试下一个数据源。<br>还有IncreasingQualityDataSourceSupplier提供的IncreasingQualityDataSource，提供一个清晰度更高的数据源。内部同样维护着一个List<supplier<datasource<t>&gt;&gt;，按次序数据源的清晰度逐渐降低。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> IncreasingQualityDataSource() &#123;</span><br><span class="line">     <span class="keyword">final</span> <span class="built_in">int</span> n = mDataSourceSuppliers.<span class="built_in">size</span>();</span><br><span class="line">     mIndexOfDataSourceWithResult = n;</span><br><span class="line">     mDataSources = <span class="keyword">new</span> ArrayList&lt;&gt;(n);</span><br><span class="line">     <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">       DataSource&lt;T&gt; dataSource = mDataSourceSuppliers.<span class="built_in">get</span>(i).<span class="built_in">get</span>();</span><br><span class="line">       mDataSources.<span class="built_in">add</span>(dataSource);</span><br><span class="line">       dataSource.subscribe(<span class="keyword">new</span> InternalDataSubscriber(i), CallerThreadExecutor.getInstance());</span><br><span class="line">       <span class="keyword">if</span> (dataSource.hasResult()) &#123;</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></supplier<datasource<t></supplier<datasource<t></p>
+<p>PipelineDraweeController：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PipelineDraweeController</span></span><br><span class="line">    <span class="keyword">extends</span> <span class="title">AbstractDraweeController</span>&lt;<span class="title">CloseableReference</span>&lt;<span class="title">CloseableImage</span>&gt;, <span class="title">ImageInfo</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Drawee controller是连接image pipeline和SettableDraweeHierarchy的桥梁。PipelineDraweeController通过数据源提供者，唯一标示controller的ID和callerContext初始化。</p>
+<p>CloseableImage：实现了Closeable接口的图片包装类。<br>CloseableReference：对SharedReference的简单包装，实现了Closeable。<br>SharedReference：对类型是T的对象进行包装，使其具有引用计数的功能。<br>SharedReference类似C++的shared_ptr。<br>shared_ptr是一种智能指针，会记录有多少个shared_ptrs共同指向一个对象。这便是所谓的引用计数（reference counting）。一旦最后一个这样的指针被销毁，也就是一旦某个对象的引用计数变为0，这个对象会被自动删除。<br>SharedReference的实现方式和C++并不相同，C++提供了一系列诸如拷贝构造函数和析构函数的语法糖，然而java并没有类似的东西。于是我们用addReference()和deleteReference() 函数替代，并且在任何情况下我们都要非常小心地运用。</p>
+<p>语法糖（Syntactic Sugar），也叫糖衣语法，是英国计算机科学家彼得·约翰·兰达(Peter J. Landin)发明的一个术语。指的是，在计算机语言中添加某种语法，这种语法能使程序员更方便的使用语言开发程序，同时增强程序代码的可读性，避免出错的机会；但是这种语法对语言的功能并没有影响。<br>Java中的泛型，变长参数，自动拆箱/装箱，条件编译等都是。</p>
+<p>SharedReference内部维护了一个IdentityHashMap的实例，用于存储对象和它的引用值：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;<span class="keyword">Object</span>, Integer&gt; sLiveObjects = <span class="keyword">new</span> IdentityHashMap&lt;&gt;();</span><br><span class="line"><span class="keyword">private</span> T mValue;</span><br><span class="line"><span class="comment">//引用值数</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">int</span> mRefCount;</span><br><span class="line"><span class="comment">//用于实现释放资源的接口,内部有一个函数release()</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ResourceReleaser&lt;T&gt; mResourceReleaser;</span><br></pre></td></tr></table></figure></p>
+<p>初始化时将其引用计数值初始化为1，并调用addLiveReference()，将该对象和它的引用计数值添加到sLiveObjects中。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addLiveReference</span>(<span class="params">Object <span class="keyword">value</span></span>) </span>&#123;</span><br><span class="line">   synchronized (sLiveObjects) &#123;</span><br><span class="line">     Integer count = sLiveObjects.<span class="keyword">get</span>(<span class="keyword">value</span>);</span><br><span class="line">     <span class="keyword">if</span> (count == <span class="keyword">null</span>) &#123;</span><br><span class="line">       sLiveObjects.put(<span class="keyword">value</span>, <span class="number">1</span>);</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       sLiveObjects.put(<span class="keyword">value</span>, count + <span class="number">1</span>);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>removeLiveReference()方法与之相反。其余的代码也就很好理解了。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//是否可用</span><br><span class="line">public synchronized boolean isValid() &#123;</span><br><span class="line">    <span class="keyword">return</span> mRefCount &gt; <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">public <span class="keyword">static</span> boolean isValid(<span class="type">SharedReference</span>&lt;?&gt; <span class="keyword">ref</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">ref</span> != null &amp;&amp; <span class="keyword">ref</span>.isValid();</span><br><span class="line">  &#125;</span><br><span class="line">public synchronized <span class="type">void</span> addReference() &#123;</span><br><span class="line">    ensureValid();</span><br><span class="line">    mRefCount++;</span><br><span class="line">  &#125;</span><br><span class="line">public <span class="type">void</span> deleteReference() &#123;</span><br><span class="line">    <span class="keyword">if</span> (decreaseRefCount() == <span class="number">0</span>) &#123;</span><br><span class="line">      T deleted;</span><br><span class="line">      synchronized (this) &#123;</span><br><span class="line">        deleted = mValue;</span><br><span class="line">        mValue = null;</span><br><span class="line">      &#125;</span><br><span class="line">      mResourceReleaser.release(deleted);</span><br><span class="line">      removeLiveReference(deleted);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">private synchronized <span class="type">int</span> decreaseRefCount() &#123;</span><br><span class="line">    ensureValid();</span><br><span class="line">    <span class="type">Preconditions</span>.checkArgument(mRefCount &gt; <span class="number">0</span>);</span><br><span class="line">	mRefCount--;</span><br><span class="line">    <span class="keyword">return</span> mRefCount;</span><br><span class="line">  &#125;</span><br><span class="line">private <span class="type">void</span> ensureValid() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(this)) &#123;</span><br><span class="line">      throw new <span class="type">NullReferenceException</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>CloseableReference代码：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化引用计数	</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="annotation">@Nullable</span> &lt;T&gt; CloseableReference&lt;T&gt; of(</span><br><span class="line">      <span class="annotation">@Nullable</span> T t,</span><br><span class="line">      ResourceReleaser&lt;T&gt; resourceReleaser) &#123;</span><br><span class="line">    <span class="keyword">if</span> (t == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CloseableReference&lt;T&gt;(t, resourceReleaser);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//添加对象引用，SharedReference引用数+1</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> CloseableReference&lt;T&gt; clone() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> CloseableReference&lt;T&gt;(mSharedReference);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="function">T <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">return</span> mSharedReference.<span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//close()方法在finalize()中调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (mIsClosed) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      mIsClosed = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   mSharedReference.deleteReference();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2015/12/18/Fresco源码分析二/">Fresco源码分析二</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Firesoul 的个人博客">Firesoul</a></p>
+  <p><span>发布时间:</span>2015年12月18日 - 00时04分</p>
+  <p><span>最后更新:</span>2015年12月18日 - 00时07分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2015/12/18/Fresco源码分析二/" title="Fresco源码分析二">http://yoursite.com/2015/12/18/Fresco源码分析二/</a>
+    <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/12/18/Fresco源码分析二/　　作者: Firesoul" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/12/18/Fresco源码分析二-1/">
+        Fresco源码分析二
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+  if ($(".toc").length < 1) {
+    $("#toc").css("display","none");
+    $("#tocButton").css("display","none");
+    $(".switch-btn").css("display","block");
+    $(".switch-area").css("display","block");
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2015/12/18/Fresco源码分析二-1/" title="下一篇: Fresco源码分析二">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2015 Firesoul
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
