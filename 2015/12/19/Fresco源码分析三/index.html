@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Firesoul's Blog">
 <meta property="og:description" content="Fresco源码分析第三部分：Image pipeline">
 <meta property="og:image" content="http://yoursite.com/images/ImagePipelineConfigbuilder.png">
-<meta property="og:updated_time" content="2015-12-19T08:29:28.429Z">
+<meta property="og:updated_time" content="2015-12-19T08:33:30.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fresco源码分析三">
 <meta name="twitter:description" content="Fresco源码分析第三部分：Image pipeline">
@@ -269,6 +269,7 @@
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SettableProducerContext settableProducerContext = <span class="literal">new</span> SettableProducerContext(</span><br><span class="line">          imageRequest,<span class="attribute">...</span>)</span><br></pre></td></tr></table></figure>
 <p>将产品的各项数据封装到产品的说明书（SettableProducerContext）。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">CloseableProducerToDataSourceAdapter</span><span class="class">.create</span>(</span><br><span class="line">          <span class="tag">producerSequence</span>,</span><br><span class="line">          <span class="tag">settableProducerContext</span>,</span><br><span class="line">          <span class="tag">mRequestListener</span>);</span><br></pre></td></tr></table></figure></p>
 <p>最后，通过CloseableProducerToDataSourceAdapter适配器把Producer转化成DataSource。<br>当然，这一切都是在图片管道里面传输的（ImagePipeline）。</p>
+<p>参考文章：<a href="https://github.com/desmond1121/Fresco-Source-Analysis" target="_blank" rel="external">https://github.com/desmond1121/Fresco-Source-Analysis</a></p>
 
       
     </div>
@@ -280,7 +281,7 @@
   <p><span>本文标题:</span><a href="/2015/12/19/Fresco源码分析三/">Fresco源码分析三</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Firesoul 的个人博客">Firesoul</a></p>
   <p><span>发布时间:</span>2015年12月19日 - 16时26分</p>
-  <p><span>最后更新:</span>2015年12月19日 - 16时29分</p>
+  <p><span>最后更新:</span>2015年12月19日 - 16时33分</p>
   <p>
     <span>原始链接:</span><a class="post-url" href="/2015/12/19/Fresco源码分析三/" title="Fresco源码分析三">http://yoursite.com/2015/12/19/Fresco源码分析三/</a>
     <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/12/19/Fresco源码分析三/　　作者: Firesoul" title="点击复制文章链接">
