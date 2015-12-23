@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Fresco源码分析四 | Firesoul&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Fresco源码分析第四部分：Produce-Consumer，ProducerSequence，AbstractProducerToDataSourceAdapter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fresco源码分析四">
+<meta property="og:url" content="http://yoursite.com/2015/12/23/Fresco源码分析四/index.html">
+<meta property="og:site_name" content="Firesoul's Blog">
+<meta property="og:description" content="Fresco源码分析第四部分：Produce-Consumer，ProducerSequence，AbstractProducerToDataSourceAdapter">
+<meta property="og:updated_time" content="2015-12-23T14:02:21.575Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fresco源码分析四">
+<meta name="twitter:description" content="Fresco源码分析第四部分：Produce-Consumer，ProducerSequence，AbstractProducerToDataSourceAdapter">
+  
+    <link rel="alternative" href="/atom.xml" title="Firesoul&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Firesoul</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+		
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Fresco/" style="font-size: 10px;">Fresco</a> <a href="/tags/源码分析/" style="font-size: 10px;">源码分析</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Something in your eyes, whispers words of last good-bye</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Firesoul</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Firesoul</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Fresco源码分析四" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/23/Fresco源码分析四/" class="article-date">
+  	<time datetime="2015-12-23T13:59:40.000Z" itemprop="datePublished">2015-12-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Fresco源码分析四
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fresco/">Fresco</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Producer相关源码在com.facebook.imagepipeline.producers包内，类和接口加在一起大概40多个。<br>先看Producer接口的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Producer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">produceResults</span><span class="params">(Consumer&lt;T&gt; consumer, ProducerContext context)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Producer：Producer是在image pipeline中用于图片处理模块。<br>处理一个图片请求包含不同的任务，例如从网上获取，硬盘缓存，内存缓存，解码，转换等等。Producer<t> 代表了一个单独的任务，其执行结果是T的对象。这就把一个完整的请求拆分成了一系列的Producer，Producer允许我们构建不同请求时复用这些模块。</t></p>
+<p>ProducerContext：被用于传递上下文信息给Producer；<br>它的指责是通知Producer哪张图片该进行fetched/decoded/resized/cached etc的处理。</p>
+<p>ProducerContextCallbacks：request状态改变回调，如request被取消，是否预加载，是否获取中间结果，request优先级的改变。</p>
+<p>ProducerListener：Producer的监听类。回调方法有Producer任务开始，Producer发布事件，Producer成功结束，Producer失败结束，Producer取消结束等。</p>
+<p><code>Consumer&lt;T&gt;</code>：消费者，消费Producer返回的信息。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Consumer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onNewResult</span><span class="params">(T newResult, <span class="keyword">boolean</span> isLast)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Throwable t)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onCancellation</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(<span class="keyword">float</span> progress)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>BaseConsumer Consumer的基本实现类<br>DelegatingConsumer Consumer的委托类<br>获取一系列的Producer，这些Producer是层层包含关系：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Producer</span>&lt;<span class="constant">CloseableReference</span>&lt;<span class="constant">CloseableImage</span><span class="prompt">&gt;&gt; </span>producerSequence =</span><br><span class="line">          mProducerSequenceFactory.getDecodedImageProducerSequence(imageRequest);</span><br></pre></td></tr></table></figure></p>
+<p>getDecodedImageProducerSequence()方法内部：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Producer</span>&lt;<span class="constant">CloseableReference</span>&lt;<span class="constant">CloseableImage</span><span class="prompt">&gt;&gt; </span>pipelineSequence =</span><br><span class="line">        getBasicDecodedImageSequence(imageRequest);</span><br></pre></td></tr></table></figure></p>
+<p>getBasicDecodedImageSequence()方法内部通过ImageRequest的getSourceUri()方法获取到图片的Uri,根据不同的Uri返回不同类型的Producer。<br>比如是HTTP和HTTPS开头的Uri，调用getNetworkFetchSequence()。<br>这个函数的请求链基本是下面的顺序：<br>swallow result if prefetch -&gt;<br>bitmap cache get -&gt;<br>background thread hand-off -&gt;<br>multiplex -&gt;<br>bitmap cache -&gt;<br>decode -&gt;<br>multiplex -&gt;<br>encoded cache -&gt;<br>disk cache -&gt;<br>(webp transcode) -&gt;<br>network fetch<br>fresco获取图片就是不断的把自己定义为一个consumer，然后向相应的producer请求数据(produceResults)的过程。（参考自该<a href="http://blog.csdn.net/sgwhp/article/details/49640611" target="_blank" rel="external">文章</a>）<br>形象地看，类似是一个Producer吞（swallow ）下了另一个Producer。<br>NetworkFetchProducer<br>WebpTranscodeProducer<br>DiskCacheProducer<br>EncodedMemoryCacheProducer<br>EncodedCacheKeyMultiplexProducer<br>AddImageTransformMetaDataProducer<br>ResizeAndRotateProducer<br>BitmapMemoryCacheProducer<br>BitmapMemoryCacheKeyMultiplexProducer<br>BackgroundThreadHandoffProducer<br>BitmapMemoryCacheGetProducer<br>在这一请求流水总共用到了以上的Producer。从上到下，上一层的Producer是一下层的Producer的构造函数中的inputProducer。<br>下面引入一段官方文档中”不用担心，使用streaming吧”<a href="http://android.jobbole.com/80922/" target="_blank" rel="external">这一小节</a>：<br>过去，Java上的异步代码常常通过类似Future的机制来执行。代码被提交给其他线程，同时检查一个类似Future的对象，看是否能得出结果。然而，假设只会有一个结果。当处理渐进式图像的时候，我们希望有一个完整而持续的结果。</p>
+<p>我们的解决方案是使用Future的更广义的版本，叫做DataSource。它提供了一个订阅方法，其调用者一定要传递一个DataSubscriber和一个Executor。该DataSubscriber从DataSource的中间值和最终结果那里接收通知，并且提供一个简单的方法来区分两者。因为我们常常处理对象，这就需要一个明确的close调用，DataSource本身就实现了Closeable。</p>
+<p>深入分析之后，其实上述的每一个格子用一个新的框架来实现，叫做Producer/Consumer。绘制图示的灵感来源于ReactiveX框架。我们的系统和RxJava有相似的接口，但其更适于移动设备，并内建了Closeables支持。</p>
+<p>该接口保持简单。Producer仅有一个方法produceResults，其中包含了一个Consumer对象。Consumer反过来也有有一个onNewResult方法。</p>
+<p>我们用此系统组成了一个生产链。设想我们有这样的一个生产者，其工作是转换 I 类型到 O 类型。实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OutputProducer</span>&lt;<span class="title">I</span>, <span class="title">O</span>&gt; <span class="keyword">implements</span> <span class="title">Producer</span>&lt;<span class="title">O</span>&gt; </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Producer&lt;I&gt; mInputProducer;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">OutputProducer</span><span class="params">(Producer&lt;I&gt; inputProducer)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.mInputProducer = inputProducer;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">produceResults</span><span class="params">(Consumer&lt;O&gt; outputConsumer, ProducerContext context)</span> </span>&#123;</span><br><span class="line">		Consumer&lt;I&gt; inputConsumer = <span class="keyword">new</span> InputConsumer(outputConsumer);</span><br><span class="line">		mInputProducer.produceResults(inputConsumer, context);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InputConsumer</span> <span class="keyword">implements</span> <span class="title">Consumer</span>&lt;<span class="title">I</span>&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> Consumer&lt;O&gt; mOutputConsumer;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">InputConsumer</span><span class="params">(Consumer&lt;O&gt; outputConsumer)</span> </span>&#123;</span><br><span class="line">			mOutputConsumer = outputConsumer;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNewResult</span><span class="params">(I newResult, <span class="keyword">boolean</span> isLast)</span> </span>&#123;</span><br><span class="line">			O output = doActualWork(newResult);</span><br><span class="line">			mOutputConsumer.onNewResult(output, isLast); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以Producer-Consumer的关系就是这样的，全部Producer内部的代码都是这样的逻辑。<br>比如BitmapMemoryCacheProducer，produceResults()方法内部的关键代码如下：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> ImageRequest imageRequest = producerContext.getImageRequest();</span><br><span class="line"><span class="keyword">final</span> CacheKey cacheKey = mCacheKeyFactory.getBitmapCacheKey(imageRequest); </span><br><span class="line">CloseableReference&lt;CloseableImage&gt; cachedReference = mMemoryCache.<span class="built_in">get</span>(cacheKey);</span><br><span class="line">  <span class="keyword">if</span> (cachedReference != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="built_in">boolean</span> isFinal = cachedReference.<span class="built_in">get</span>().getQualityInfo().isOfFullQuality();</span><br><span class="line">      <span class="keyword">if</span> (isFinal) &#123;</span><br><span class="line">        listener.onProducerFinishWithSuccess(</span><br><span class="line">            requestId,</span><br><span class="line">            getProducerName(),</span><br><span class="line">            listener.requiresExtraMap(requestId) ? ImmutableMap.of(VALUE_FOUND, <span class="string">"true"</span>) : <span class="keyword">null</span>);</span><br><span class="line">        consumer.onProgressUpdate(<span class="number">1</span>f);</span><br><span class="line">      &#125;</span><br><span class="line">      consumer.onNewResult(cachedReference, isFinal);</span><br><span class="line">      cachedReference.close();</span><br><span class="line">      <span class="keyword">if</span> (isFinal) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>如从mMemoryCache中查找到图片，就调用consumer.onNewResult()，然后返回。<br>如果没有查找到，就执行如下代码:<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;CloseableReference&lt;CloseableImage&gt;&gt; wrappedConsumer = wrapConsumer(consumer, cacheKey)<span class="comment">;</span></span><br><span class="line">mInputProducer.produceResults(wrappedConsumer, producerContext)<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>调用wrapConsumer()方法对原始的consumer进行包装，然后调用mInputProducer（在这里是BackgroundThreadHandoffProducer）的produceResults()方法。<br>BitmapMemoryCacheProducer的wrapConsumer()方法执行了如下处理：<br>1）数据为空，直接传给上层Consumer处理并返回；<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (newResult == <span class="literal">null</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (isLast) &#123;</span><br><span class="line">            getConsumer().onNewResult(<span class="literal">null</span>, <span class="literal">true</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>2）数据存储着某种状态（如动态图存储着当前浏览帧）时，不进行缓存，直接传给上层Consumer处理并返回；<br><figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (newResult.get<span class="literal">()</span>.isStateful<span class="literal">()</span>) &#123;</span><br><span class="line">         getConsumer<span class="literal">()</span>.onNewResult(newResult, isLast);</span><br><span class="line">         return;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>3）当没有结束传递时，如果收到数据的质量大于缓存中对应数据的质量（如果存在的话）时，则传给上层Consumer处理并返回；<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isLast) &#123;</span><br><span class="line">          <span class="type">CloseableReference</span>&lt;<span class="type">CloseableImage</span>&gt; currentCachedResult = mMemoryCache.get(cacheKey);</span><br><span class="line">          <span class="keyword">if</span> (currentCachedResult != null) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="type">QualityInfo</span> newInfo = newResult.get().getQualityInfo();</span><br><span class="line">              <span class="type">QualityInfo</span> cachedInfo = currentCachedResult.get().getQualityInfo();</span><br><span class="line">              <span class="keyword">if</span> (cachedInfo.isOfFullQuality() || cachedInfo.getQuality() &gt;= newInfo.getQuality()) &#123;</span><br><span class="line">                getConsumer().onNewResult(currentCachedResult, <span class="literal">false</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">              <span class="type">CloseableReference</span>.closeSafely(currentCachedResult);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // cache <span class="keyword">and</span> forward the new <span class="literal">result</span></span><br><span class="line">        <span class="type">CloseableReference</span>&lt;<span class="type">CloseableImage</span>&gt; newCachedResult =</span><br><span class="line">            mMemoryCache.cache(cacheKey, newResult);</span><br></pre></td></tr></table></figure></p>
+<p>4）数据传递结束，将得到的数据缓存起来，更新进度，通知上层Consumer处理。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">     <span class="keyword">if</span> (isLast) &#123;</span><br><span class="line">            getConsumer().onProgressUpdate(<span class="number">1</span>f);</span><br><span class="line">          &#125;</span><br><span class="line">          getConsumer().onNewResult(</span><br><span class="line">              (newCachedResult != <span class="literal">null</span>) ? newCachedResult : newResult, isLast);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          CloseableReference.closeSafely(newCachedResult);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> &lt;T&gt; DataSource&lt;CloseableReference&lt;T&gt;&gt; submitFetchRequest(</span><br><span class="line">      Producer&lt;CloseableReference&lt;T&gt;&gt; producerSequence,</span><br><span class="line">      ImageRequest imageRequest,</span><br><span class="line">      ImageRequest.RequestLevel lowestPermittedRequestLevelOnSubmit,</span><br><span class="line">      Object callerContext) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      ImageRequest.RequestLevel lowestPermittedRequestLevel =</span><br><span class="line">          ImageRequest.RequestLevel.getMax(</span><br><span class="line">              imageRequest.getLowestPermittedRequestLevel(),</span><br><span class="line">              lowestPermittedRequestLevelOnSubmit);</span><br><span class="line">      SettableProducerContext settableProducerContext = <span class="keyword">new</span> SettableProducerContext(</span><br><span class="line">          imageRequest,</span><br><span class="line">          generateUniqueFutureId(),</span><br><span class="line">          mRequestListener,</span><br><span class="line">          callerContext,</span><br><span class="line">          lowestPermittedRequestLevel,</span><br><span class="line">        <span class="comment">/* isPrefetch */</span> <span class="keyword">false</span>,</span><br><span class="line">          imageRequest.getProgressiveRenderingEnabled() ||</span><br><span class="line">              !UriUtil.isNetworkUri(imageRequest.getSourceUri()),</span><br><span class="line">          imageRequest.getPriority());</span><br><span class="line">      <span class="keyword">return</span> CloseableProducerToDataSourceAdapter.create(</span><br><span class="line">          producerSequence,</span><br><span class="line">          settableProducerContext,</span><br><span class="line">          mRequestListener);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="keyword">exception</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> DataSources.immediateFailedDataSource(<span class="keyword">exception</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>SettableProducerContext继承自BaseProducerContext，并可设置是否预处理，是否获取中间结果，request的优先级。<br><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">CloseableProducerToDataSourceAdapter<span class="tag">&lt;<span class="title">T</span>&gt;</span>extends AbstractProducerToDataSourceAdapter<span class="tag">&lt;<span class="title">CloseableReference</span>&lt;<span class="attribute">T</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>CloseableProducerToDataSourceAdapter<t>：<br>DataSource<closeablereference<t>&gt; backed by a Producer<closeablereference<t>&gt;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AbstractProducerToDataSourceAdapter<span class="tag">&lt;<span class="title">T</span>&gt;</span> extends AbstractDataSource<span class="tag">&lt;<span class="title">T</span>&gt;</span></span><br></pre></td></tr></table></figure></closeablereference<t></closeablereference<t></t></p>
+<p>AbstractProducerToDataSourceAdapter<t>：<br>DataSource<t> backed by a Producer<t></t></t></t></p>
+<p>AbstractProducerToDataSourceAdapter先通过createConsumer()方法创建一个Consumer，在onNewResultImpl，onFailureImpl，onCancellationImpl，onProgressUpdateImpl中调用AbstractProducerToDataSourceAdapter自己的实现。然后调用producer.produceResults开始加载数据。</p>
+<p>参考文章：<a href="https://github.com/desmond1121/Fresco-Source-Analysis" target="_blank" rel="external">https://github.com/desmond1121/Fresco-Source-Analysis</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2015/12/23/Fresco源码分析四/">Fresco源码分析四</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Firesoul 的个人博客">Firesoul</a></p>
+  <p><span>发布时间:</span>2015年12月23日 - 21时59分</p>
+  <p><span>最后更新:</span>2015年12月23日 - 22时02分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2015/12/23/Fresco源码分析四/" title="Fresco源码分析四">http://yoursite.com/2015/12/23/Fresco源码分析四/</a>
+    <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/12/23/Fresco源码分析四/　　作者: Firesoul" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/12/19/Fresco源码分析三/">
+        Fresco源码分析三
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+  if ($(".toc").length < 1) {
+    $("#toc").css("display","none");
+    $("#tocButton").css("display","none");
+    $(".switch-btn").css("display","block");
+    $(".switch-area").css("display","block");
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2015/12/19/Fresco源码分析三/" title="下一篇: Fresco源码分析三">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2015 Firesoul
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
