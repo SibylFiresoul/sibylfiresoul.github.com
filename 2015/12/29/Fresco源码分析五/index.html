@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Fresco源码分析五 | Firesoul&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Fresco源码分析第五部分：内存缓存和文件缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fresco源码分析五">
+<meta property="og:url" content="http://yoursite.com/2015/12/29/Fresco源码分析五/index.html">
+<meta property="og:site_name" content="Firesoul's Blog">
+<meta property="og:description" content="Fresco源码分析第五部分：内存缓存和文件缓存">
+<meta property="og:updated_time" content="2015-12-29T13:03:32.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fresco源码分析五">
+<meta name="twitter:description" content="Fresco源码分析第五部分：内存缓存和文件缓存">
+  
+    <link rel="alternative" href="/atom.xml" title="Firesoul&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Firesoul</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+		
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Fresco/" style="font-size: 20px;">Fresco</a> <a href="/tags/年度十佳/" style="font-size: 10px;">年度十佳</a> <a href="/tags/源码分析/" style="font-size: 20px;">源码分析</a> <a href="/tags/纪录片/" style="font-size: 10px;">纪录片</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Something in your eyes, whispers words of last good-bye</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Firesoul</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Firesoul</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Fresco源码分析五" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/29/Fresco源码分析五/" class="article-date">
+  	<time datetime="2015-12-29T13:01:56.000Z" itemprop="datePublished">2015-12-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Fresco源码分析五
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fresco/">Fresco</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>内存缓存的实现：</p>
+<p>CacheKey：用于缓存键的接口，替代Object，所以要实现equals()和hashCode()方法，而toString()方法用于单元测试和调试。<br>SimpleCacheKey：CacheKey的简单实现，使用传入的字符串key值的hashCode作为唯一标识。<br>BitmapMemoryCacheKey：已解码的内存缓存键，用URI字符串的hashCode，调整大小尺寸，是否自动旋转，图片解码选项，后处理字符串等参数最为唯一标识。</p>
+<p>MemoryCache：用于缓存的接口，包含一对键值，并提供增删改查四大基本方法，cache()，get()，removeAll()，contains()。<br>InstrumentedMemoryCache：带有MemoryCacheTracker的MemoryCache，对MemoryCache做简单的包装，使其可以分别在加入到缓存，查找命中，查找未命中的时候回调MemoryCacheTracker的onCachePut()，onCacheHit()，onCacheMiss()方法。</p>
+<p>CountingMemoryCache：该类实现具体    的内存缓存，实现了MemoryCache<k, v="">和 MemoryTrimmable接口。MemoryTrimmable是在内存不足时，控制释放内存部分资源的接口，只包含trim()一个方法，该方法参数类型是枚举类MemoryTrimType，MemoryTrimType提供一个参数suggestedTrimRatio，该参数是根据APP的不同情况建议释放内存的比率。</k,></p>
+<p>CountingMemoryCache主要包括四个重要的成员变量和增删改查四个方法的具体实现。<br>四个重要的成员变量分别为：<br>Entry包装了缓存键(K)和缓存值(CloseableReference<v>),对象被引用的数量(clientCount)和是否被缓存追踪(isOrphan),以及EntryStateObserver接口，该接口通过onExclusivityChanged(K key, boolean isExclusive)函数在回收队列状态改变的时候通过回调控制该key对应的对象是否可以被重用(isExclusive)。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储未被使用的对象，已经准备好被回收，但是还没有被回收</span></span><br><span class="line"><span class="keyword">final</span> CountingLruMap&lt;K, Entry&lt;K, V&gt;&gt; mExclusiveEntries;</span><br><span class="line"><span class="comment">//存储全部的缓存对象，包括未被使用的对象</span></span><br><span class="line"><span class="keyword">final</span> CountingLruMap&lt;K, Entry&lt;K, V&gt;&gt; mCachedEntries;</span><br><span class="line"><span class="comment">//该接口通过唯一的方法getSizeInBytes()返回V值的大小，单位是byte</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ValueDescriptor&lt;V&gt; mValueDescriptor;</span><br><span class="line"><span class="comment">//该接口通过唯一的方法getTrimRatio()返回MemoryTrimType的suggestedTrimRatio</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> CacheTrimStrategy mCacheTrimStrategy;</span><br></pre></td></tr></table></figure></v></p>
+<p>CountingLruMap：LinkedHashMap，增删改查方法。<br>增删改查方法都是对mExclusiveEntries和mCachedEntries的相应操作。<br>其中：<br>maybeUpdateCacheParams()：检查是否需要更新缓存参数，时间间隔是5分钟。<br>所谓的缓存参数是(MemoryCacheParams):<br>缓存最大值(maxCacheSize) 单位byte,<br>缓存最多的对象个数(maxCacheEntries),<br>回收队列最大值(maxEvictionQueueSize), 单位byte<br>回收队列最多的对象个数(maxEvictionQueueEntries),<br>单个缓存对象的最大值(maxCacheEntrySize)。</p>
+<p>uptimeMillis()返回的是系统从启动到当前处于非休眠期的时间。<br>elapsedRealTime()返回的是系统从启动到现在的时间。</p>
+<p>maybeEvictEntries():如果超过了回收队列的最大值或者是回收队列的对象的最多个数，就从回收队列移除第一个对象，将该对象的isOrphan设置为true,并释放该对象。</p>
+<p>缓存操作的逻辑：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> CloseableReference&lt;V&gt; cache(</span><br><span class="line">     <span class="keyword">final</span> K <span class="variable">key</span>,</span><br><span class="line">     <span class="keyword">final</span> CloseableReference&lt;V&gt; valueRef,</span><br><span class="line">     <span class="keyword">final</span> EntryStateObserver&lt;K&gt; observer) &#123;</span><br><span class="line">   Preconditions.checkNotNull(<span class="variable">key</span>);</span><br><span class="line">   Preconditions.checkNotNull(valueRef);</span><br><span class="line"></span><br><span class="line">   maybeUpdateCacheParams();</span><br><span class="line"></span><br><span class="line">   Entry&lt;K, V&gt; oldExclusive;</span><br><span class="line">   CloseableReference&lt;V&gt; oldRefToClose = <span class="keyword">null</span>;</span><br><span class="line">   CloseableReference&lt;V&gt; clientRef = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">     <span class="comment">// remove the old item (if any) as it is stale now</span></span><br><span class="line">     oldExclusive = mExclusiveEntries.remove(<span class="variable">key</span>);</span><br><span class="line">     Entry&lt;K, V&gt; oldEntry = mCachedEntries.remove(<span class="variable">key</span>);</span><br><span class="line">     <span class="keyword">if</span> (oldEntry != <span class="keyword">null</span>) &#123;</span><br><span class="line">       makeOrphan(oldEntry);</span><br><span class="line">       oldRefToClose = referenceToClose(oldEntry);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> (canCacheNewValue(valueRef.<span class="built_in">get</span>())) &#123;</span><br><span class="line">       Entry&lt;K, V&gt; newEntry = Entry.of(<span class="variable">key</span>, valueRef, observer);</span><br><span class="line">       mCachedEntries.put(<span class="variable">key</span>, newEntry);</span><br><span class="line">       clientRef = newClientReference(newEntry);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   CloseableReference.closeSafely(oldRefToClose);</span><br><span class="line">   maybeNotifyExclusiveEntryRemoval(oldExclusive);</span><br><span class="line"></span><br><span class="line">   maybeEvictEntries();</span><br><span class="line">   <span class="keyword">return</span> clientRef;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以，首先要先检查缓存参数是否要更新，因为缓存对象之后要改变mExclusiveEntries和mCachedEntries的大小，要先查看两个队列大小和对象个数的设置。<br>然后，从两个队列分别取出KEY值对应的Entry对象。如果对象不为NULL就将其移除并尝试释放。<br>检查mCachedEntries是否还有空间，如果有就插入。并将这个对象包装成CloseableReference对象返回。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> CloseableReference&lt;V&gt; <span class="title">newClientReference</span><span class="params">(<span class="keyword">final</span> Entry&lt;K, V&gt; entry)</span> </span>&#123;</span><br><span class="line">    increaseClientCount(entry);</span><br><span class="line">    <span class="keyword">return</span> CloseableReference.of(</span><br><span class="line">        entry.valueRef.get(),</span><br><span class="line">        <span class="keyword">new</span> ResourceReleaser&lt;V&gt;() &#123;</span><br><span class="line">          <span class="annotation">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(V unused)</span> </span>&#123;</span><br><span class="line">            releaseClientReference(entry);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>该对象自增引用计数并具有自动释放资源的方法。<br>最后，调用maybeEvictEntries()检查回收队列的状态并回调observer.onExclusivityChanged()。<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;K, V&gt; <span class="function"><span class="keyword">void</span> <span class="title">maybeNotifyExclusiveEntryRemoval</span><span class="params">(@Nullable Entry&lt;K, V&gt; entry)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (entry != <span class="keyword">null</span> &amp;&amp; entry.observer != <span class="keyword">null</span>) &#123;</span><br><span class="line">      entry.observer.onExclusivityChanged(entry.key, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>mCachedEntries和mExclusiveEntries释放资源的逻辑分别是：<br>mCachedEntries：entry.isOrphan &amp;&amp; entry.clientCount == 0<br>mExclusiveEntries：(mExclusiveEntries.getCount() &gt; count || mExclusiveEntries.getSizeInBytes() &gt; size</p>
+<p>BitmapCountingMemoryCacheFactory：提供用于已解码缓存的CountingMemoryCache的工厂。<br>get()方法返回CountingMemoryCache<cachekey, closeableimage="">。<br>EncodedCountingMemoryCacheFactory：提供用于未解码缓存的CountingMemoryCache的工厂。<br>get()方法返回CountingMemoryCache<cachekey, pooledbytebuffer=""></cachekey,></cachekey,></p>
+<p>BitmapMemoryCacheFactory：提供已解码的内存缓存（BitmapMemoryCache）的工厂。<br>EncodedMemoryCacheFactory：提供未解码的内存缓存（EncodedMemoryCache）的工厂。</p>
+<p>两者的区别仅仅在于获取资源大小（ValueDescriptor）的方式和释放资源的策略（MemoryTrimmableRegistry）不同。</p>
+<p>文件缓存的实现：<br>DiskStorage：负责文件存取的接口，包含一些存取文件的基本方法并通过内部类DiskDumpInfo保存了文件的一些信息。<br>主要方法如下：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过resourceId获取到文件</span></span><br><span class="line">BinaryResource getResource(<span class="keyword">String</span> resourceId, <span class="keyword">Object</span> debugInfo) <span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//通过resourceId查询是否包含文件</span></span><br><span class="line"><span class="built_in">boolean</span> contains(<span class="keyword">String</span> resourceId, <span class="keyword">Object</span> debugInfo) <span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//通过resourceId查询是否包含文件,如果存在更新最近访问时间</span></span><br><span class="line"><span class="built_in">boolean</span> touch(<span class="keyword">String</span> resourceId, <span class="keyword">Object</span> debugInfo) <span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//创建一个临时文件</span></span><br><span class="line">BinaryResource createTemporary(<span class="keyword">String</span> resourceId, <span class="keyword">Object</span> debugInfo) <span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//提交createTemporary()方法创建的临时文件</span></span><br><span class="line">BinaryResource commit( <span class="keyword">String</span> resourceId,BinaryResource temporary,<span class="keyword">Object</span> debugInfo)<span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//获取缓存目录下所有文件的Entry,Entry内部封装了文件的时间戳，大小，getResource()方法</span></span><br><span class="line">Collection&lt;Entry&gt; getEntries() <span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//删除文件</span></span><br><span class="line"><span class="keyword">long</span> remove(<span class="keyword">String</span> resourceId) <span class="keyword">throws</span> IOException;</span><br><span class="line"><span class="comment">//获取文件Entry的信息</span></span><br><span class="line">DiskDumpInfo getDumpInfo() <span class="keyword">throws</span> IOException;</span><br></pre></td></tr></table></figure></p>
+<p>首先，BinaryResource接口用于封装文件对象，<br>它包含获取该文件输入流的方法（InputStream openStream()），以字节数组的方式读取该文件的方法（byte[] read()）和获取该文件大小的方法（size()）。<br>它的实现类有两个，ByteArrayBinaryResource类是BinaryResource的字节数组形式，通过文件的字节数组构造，同时openStream()方法返回ByteArrayInputStream(),ByteArrayInputStream()将一个字节数组当作流输入的来源。FileBinaryResource类是BinaryResource的File形式，通过File构造，同时openStream()方法返回文件输入流FileInputStream()。</p>
+<p>其次，以上这些和“增删改查”相关的方法都是通过resourceId“实名存取”的。<br>DefaultDiskStorage是DiskStorage的实现类。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> CONTENT_FILE_EXTENSION = <span class="string">".cnt"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TEMP_FILE_EXTENSION = <span class="string">".tmp"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>其中，.cnt是实际存储的内容文件，      .tmp是临时文件。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> FileBinaryResource getResource(String resourceId, Object debugInfo) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">File</span> <span class="keyword">file</span> = getContentFileFor(resourceId);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">file</span>.exists()) &#123;</span><br><span class="line">      <span class="keyword">file</span>.setLastModified(mClock.now());</span><br><span class="line">      <span class="keyword">return</span> FileBinaryResource.createOrNull(<span class="keyword">file</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过resourceId的哈希码创建.cnt文件。<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">File getContentFileFor(String resourceId) &#123;</span><br><span class="line">   FileInfo <span class="keyword">fileInfo</span> = new FileInfo(FileType.CONTENT, resourceId);</span><br><span class="line">   <span class="comment">//获取用于缓存文件的目录</span></span><br><span class="line">   File <span class="keyword">parent</span> = getSubdirectory(<span class="keyword">fileInfo</span>.resourceId);</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">fileInfo</span>.toFile(<span class="keyword">parent</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> File getSubdirectory(<span class="keyword">String</span> resourceId) &#123;</span><br><span class="line">    <span class="keyword">String</span> subdirectory = <span class="keyword">String</span>.valueOf(Math.<span class="built_in">abs</span>(resourceId.hashCode() % SHARDING_BUCKET_COUNT));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> File(mVersionDirectory, subdirectory);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p> // mVersionDirectory’s name identifies:<br> // - the cache structure’s version (sharded)<br> // - the content’s version (version value)<br> // if structure changes, prefix will change… if content changes version will be different<br> // the ideal would be asking mSharding its name, but it’s created receiving the directory</p>
+<p>DiskStorageCache：DiskStorageCache实现了FileCache接口和DiskTrimmable接口，是建立在DisKStorage之上的文件缓存（DisKCache），是真正通过CacheKey存取的缓存类。<br>FileCache:为了和DiskStorage实现功能的对接，其含有类似的“增删改查”方法，如getResource()，insert()，remove()，当然这些方法的参数都是CacheKey类型。<br>DiskTrimmable:其中包含两个回调方法，<br>1）trimToMinimum()  disk空间剩下很少一部分的时候回调<br>2）trimToNothing()    disk空间几乎没有剩余，app几乎要crash的时候回调</p>
+<p>ResourceId是key.toString().getBytes(“UTF-8”)通过SHA-1加密再经过Base64编码获得的。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String</span> getResourceId(<span class="keyword">final</span> CacheKey <span class="variable">key</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> SecureHashUtil.makeSHA1HashBase64(<span class="variable">key</span>.toString().getBytes(<span class="string">"UTF-8"</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">      <span class="comment">// This should never happen. All VMs support UTF-8</span></span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>其主要的getResource()，insert()，remove()方法均是通过DiskStorageSupplier的get()方法获取到DisKStorage然后再调用相应的方法执行。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trimToMinimum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  synchronized (mLock) &#123;</span><br><span class="line">    maybeUpdateFileCacheSize();</span><br><span class="line">    <span class="keyword">long</span> cacheSize = mCacheStats.getSize();</span><br><span class="line">    <span class="keyword">if</span> (mCacheSizeLimitMinimum &lt;= <span class="number">0</span> || cacheSize &lt;= <span class="number">0</span> || cacheSize &lt; mCacheSizeLimitMinimum) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">double</span> trimRatio = <span class="number">1</span> - (<span class="keyword">double</span>) mCacheSizeLimitMinimum / (<span class="keyword">double</span>) cacheSize;</span><br><span class="line">    <span class="keyword">if</span> (trimRatio &gt; TRIMMING_LOWER_BOUND) &#123;</span><br><span class="line">      trimBy(trimRatio);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>maybeUpdateFileCacheSize()方法重新计算缓存的大小，将缓存的大小（Byte）和缓存内的Item数量保存在CacheStats类的实例中。<br>mCacheSizeLimitMinimum表示期待留下的空间的大小。（总空间大小-mCacheSizeLimitMinimum）即是将要回收的空间大小。<br>trimToMinimum()调用trimBy(trimRatio),trimRatio是回收空间占总空间的比例。<br>trimBy()中进入evictAboveSize()函数：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> cacheSize = mCacheStats.getSize();</span><br><span class="line"><span class="keyword">long</span> newMaxBytesInFiles = cacheSize - (<span class="keyword">long</span>) (trimRatio * cacheSize);</span><br><span class="line">evictAboveSize(newMaxBytesInFiles,</span><br><span class="line">CacheEventListener.EvictionReason.CACHE_MANAGER_TRIMMED);</span><br></pre></td></tr></table></figure></p>
+<p>getSortedEntries()方法将缓存目录下的所有Entry按着访问时间进行排序，最近访问的图片放在数组的最后。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Collection&lt;DiskStorage.Entry&gt; getSortedEntries(</span><br><span class="line">     Collection&lt;DiskStorage.Entry&gt; allEntries) &#123;</span><br><span class="line">    <span class="keyword">final</span> ArrayList&lt;DiskStorage.Entry&gt; entriesList = <span class="keyword">new</span> ArrayList&lt;&gt;(allEntries);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">long</span> threshold =</span><br><span class="line">        mClock.now() + DiskStorageCache.FUTURE_TIMESTAMP_THRESHOLD_MS;</span><br><span class="line">    Collections.<span class="keyword">sort</span>(entriesList, <span class="keyword">new</span> TimestampComparator(threshold));</span><br><span class="line">    <span class="keyword">return</span> entriesList;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后，从前向后依次删除，直到缓存的空间达到期待留下的空间的大小。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">evictAboveSize</span><span class="params">(</span><br><span class="line">      <span class="keyword">long</span> desiredSize,</span><br><span class="line">      CacheEventListener.EvictionReason reason)</span> throws IOException </span>&#123;</span><br><span class="line">    DiskStorage storage = mStorageSupplier.get();</span><br><span class="line">    Collection&lt;DiskStorage.Entry&gt; entries;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      entries = getSortedEntries(storage.getEntries());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException ioe) &#123;</span><br><span class="line">      mCacheErrorLogger.logError(</span><br><span class="line">          CacheErrorLogger.CacheErrorCategory.EVICTION,</span><br><span class="line">          TAG,</span><br><span class="line">          <span class="string">"evictAboveSize: "</span> + ioe.getMessage(),</span><br><span class="line">          ioe);</span><br><span class="line">      <span class="keyword">throw</span> ioe;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> deleteSize = mCacheStats.getSize() - desiredSize;</span><br><span class="line">    <span class="keyword">int</span> itemCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> sumItemSizes = <span class="number">0L</span>;</span><br><span class="line">    <span class="keyword">for</span> (DiskStorage.Entry entry: entries) &#123;</span><br><span class="line">      <span class="keyword">if</span> (sumItemSizes &gt; (deleteSize)) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">long</span> deletedSize = storage.remove(entry);</span><br><span class="line">      <span class="keyword">if</span> (deletedSize &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        itemCount ++;</span><br><span class="line">        sumItemSizes += deletedSize;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    mCacheStats.increment(-sumItemSizes, -itemCount);</span><br><span class="line">    storage.purgeUnexpectedResources();</span><br><span class="line">    reportEviction(reason, itemCount, sumItemSizes);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>而trimToNothing()方法则直接调用clearAll()方法，具体实现不再追踪。<br>主要代码如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">mStorageSupplier</span><span class="class">.get</span>()<span class="class">.clearAll</span>();</span><br><span class="line"><span class="tag">mCacheStats</span><span class="class">.reset</span>();</span><br></pre></td></tr></table></figure></p>
+<p>BufferedDiskCache：文件缓存缓冲区是在DiskStorageCache之上的包装，提供了get/put方法用于Disk-Cache的read/writes。<br>主要有四个方法：<br>1）Task<boolean> contains(final CacheKey key)方法：<br> 如果在staging area内查找成功，就直接返回。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> EncodedImage pinnedImage = mStagingArea.<span class="built_in">get</span>(<span class="variable">key</span>);</span><br><span class="line">   <span class="keyword">if</span> (pinnedImage != <span class="keyword">null</span>) &#123;</span><br><span class="line">     pinnedImage.close();</span><br><span class="line">     mImageCacheStatsTracker.onStagingAreaHit();</span><br><span class="line">     <span class="keyword">return</span> Task.forResult(<span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></boolean></p>
+<p>如果，没有查找到就在后台线程中去disk-cache中查找，mFileCache.hasKey(key)。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="type">Task</span>.call(</span><br><span class="line">          new <span class="type">Callable</span>&lt;<span class="type">Boolean</span>&gt;() &#123;</span><br><span class="line">            @<span class="type">Override</span></span><br><span class="line">            public <span class="type">Boolean</span> call() throws <span class="type">Exception</span> &#123;</span><br><span class="line">              <span class="type">EncodedImage</span> <span class="literal">result</span> = mStagingArea.get(key);</span><br><span class="line">              <span class="keyword">if</span> (<span class="literal">result</span> != null) &#123;</span><br><span class="line">                <span class="literal">result</span>.close();</span><br><span class="line">                mImageCacheStatsTracker.onStagingAreaHit();</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                mImageCacheStatsTracker.onStagingAreaMiss();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                  <span class="keyword">return</span> mFileCache.hasKey(key);</span><br><span class="line">                &#125; catch (<span class="type">Exception</span> exception) &#123;</span><br><span class="line">                  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          mReadExecutor);</span><br></pre></td></tr></table></figure></p>
+<p>StagingArea：是存储将要写入disk-cache但是还没有被写入disk-cache的数据的区域。StagingArea内部维持一个HashMap数据结构，用以记录图片的CacheKey和EncodedImage(未解码图片)的对应关系。<br>2）3）get()和put()方法也都是先在StagingArea内查找。<br>get()方法的主要代码：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">     final <span class="type">PooledByteBuffer</span> buffer = readFromDiskCache(key);</span><br><span class="line">     <span class="type">CloseableReference</span>&lt;<span class="type">PooledByteBuffer</span>&gt; <span class="keyword">ref</span> = <span class="type">CloseableReference</span>.<span class="keyword">of</span>(buffer);</span><br><span class="line">         <span class="keyword">try</span> &#123;<span class="literal">result</span> = new <span class="type">EncodedImage</span>(<span class="keyword">ref</span>);&#125; </span><br><span class="line">         <span class="keyword">finally</span> &#123;<span class="type">CloseableReference</span>.closeSafely(<span class="keyword">ref</span>);&#125;</span><br><span class="line">     &#125; catch (<span class="type">Exception</span> exception) &#123;</span><br><span class="line">                  <span class="keyword">return</span> null;</span><br><span class="line">     &#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="type">Thread</span>.interrupted()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="literal">result</span> != null) &#123;</span><br><span class="line">       <span class="literal">result</span>.close();</span><br><span class="line">     &#125;throw new <span class="type">InterruptedException</span>();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">result</span>;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>readFromDiskCache()方法主要代码如下：<br><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> BinaryResource diskCacheResource = mFileCache.getResource(key);</span><br><span class="line">      <span class="keyword">if</span> (diskCacheResource == <span class="literal">null</span>) &#123;</span><br><span class="line">        mImageCacheStatsTracker.onDiskCacheMiss();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mImageCacheStatsTracker.onDiskCacheHit();</span><br><span class="line">      &#125;</span><br><span class="line">      PooledByteBuffer byteBuffer;</span><br><span class="line">      <span class="keyword">final</span> InputStream <span class="keyword">is</span> = diskCacheResource.openStream();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">     byteBuffer = mPooledByteBufferFactory.newByteBuffer(</span><br><span class="line">     <span class="keyword">is</span>,(<span class="keyword">int</span>)diskCacheResource.size());</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">is</span>.close();</span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">return</span> byteBuffer;</span><br></pre></td></tr></table></figure></p>
+<p>可见具体过程是:<br>BufferedDiskCache.get(key)          EncodedImage    加入StagingArea缓冲，操作读写<br>DiskStorageCache.getResource(key)   BinaryResource      LRU<br>DefaultDiskStorage.getResource(getResourceId(key))   File   文件存储<br>所以，最开始是从Disk具体的目录读取出File,然后封装成BinaryResource形式，通过BinaryResource的openStream()转换成输入流，再转换成PooledByteBuffer，最后转换成EncodedImage。</p>
+<p>put()方法的主要代码：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mStagingArea.put(<span class="variable">key</span>, encodedImage);</span><br><span class="line"> mWriteExecutor.execute(</span><br><span class="line">          <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                writeToDiskCache(<span class="variable">key</span>, finalEncodedImage);</span><br><span class="line">              &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                mStagingArea.remove(<span class="variable">key</span>, finalEncodedImage);</span><br><span class="line">                EncodedImage.closeSafely(finalEncodedImage);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>将encodedImage.getInputStream()拷贝到os。<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mFileCache.insert(</span><br><span class="line">          key, <span class="keyword">new</span> WriterCallback() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(OutputStream os)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">              mPooledByteStreams.copy(encodedImage.getInputStream(), os);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以，现在回过头来看DiskStorageCache的insert()代码：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">String</span> resourceId = getResourceId(<span class="variable">key</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      BinaryResource temporary = createTemporaryResource(resourceId, <span class="variable">key</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        mStorageSupplier.<span class="built_in">get</span>().updateResource(resourceId, temporary, callback, <span class="variable">key</span>);</span><br><span class="line">        <span class="keyword">return</span> commitResource(resourceId, <span class="variable">key</span>, temporary);</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        deleteTemporaryResource(temporary);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>先创建一个临时文件，通过updateResource()的WriterCallback回调向临时文件temporary做写入的操作，然后提交临时文件.tmp使其变成.cnt文件，最后再删除掉临时文件。</p>
+<p>updateResource()主要代码如下：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileStream = <span class="keyword">new</span> FileOutputStream(<span class="keyword">file</span>);</span><br><span class="line">CountingOutputStream countingStream = <span class="keyword">new</span> CountingOutputStream(fileStream);</span><br><span class="line">callback.<span class="keyword">write</span>(countingStream);</span><br></pre></td></tr></table></figure></p>
+<p>从类型为BinaryResource的临时文件中提取出File类型的文件file转换成FileOutputStream</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2015/12/29/Fresco源码分析五/">Fresco源码分析五</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Firesoul 的个人博客">Firesoul</a></p>
+  <p><span>发布时间:</span>2015年12月29日 - 21时01分</p>
+  <p><span>最后更新:</span>2015年12月29日 - 21时03分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2015/12/29/Fresco源码分析五/" title="Fresco源码分析五">http://yoursite.com/2015/12/29/Fresco源码分析五/</a>
+    <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/12/29/Fresco源码分析五/　　作者: Firesoul" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/12/23/2015我的年度10佳纪录片/">
+        2015：我的年度10佳纪录片
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+  if ($(".toc").length < 1) {
+    $("#toc").css("display","none");
+    $("#tocButton").css("display","none");
+    $(".switch-btn").css("display","block");
+    $(".switch-area").css("display","block");
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2015/12/23/2015我的年度10佳纪录片/" title="下一篇: 2015：我的年度10佳纪录片">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2015 Firesoul
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
