@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Fresco源码分析六 | Firesoul&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Fresco源码分析第六部分：解码，缩放和旋转处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fresco源码分析六">
+<meta property="og:url" content="http://sibylfiresoul.github.io/2016/01/07/Fresco源码分析六/index.html">
+<meta property="og:site_name" content="Firesoul's Blog">
+<meta property="og:description" content="Fresco源码分析第六部分：解码，缩放和旋转处理">
+<meta property="og:updated_time" content="2016-01-06T16:46:26.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fresco源码分析六">
+<meta name="twitter:description" content="Fresco源码分析第六部分：解码，缩放和旋转处理">
+  
+    <link rel="alternative" href="/atom.xml" title="Firesoul&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Firesoul</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+		
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Fresco/" style="font-size: 20px;">Fresco</a> <a href="/tags/年度十佳/" style="font-size: 10px;">年度十佳</a> <a href="/tags/源码分析/" style="font-size: 20px;">源码分析</a> <a href="/tags/纪录片/" style="font-size: 10px;">纪录片</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Something in your eyes, whispers words of last good-bye</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Firesoul</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Firesoul</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Something in your eyes, whispers words of last good-bye.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/SibylFiresoul" title="GitHub"></a></li>
+					        
+								<li id="豆瓣"><a class="豆瓣" target="_blank" href="http://www.douban.com/people/firesoul/" title="豆瓣"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Fresco源码分析六" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/Fresco源码分析六/" class="article-date">
+  	<time datetime="2016-01-06T16:45:09.000Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Fresco源码分析六
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fresco/">Fresco</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>图片解码部分：<br>DecodeProducer的内部类ProgressiveDecoder中doDecode()方法对未解码的图片进行解码。<br>该方法实际上调用了ImageDecoder类的decodeImage()方法，该方法根据图片不同的格式调用不同的解码方法，每种解码方法再调用不同平台的解码方法。（以JPEG为例）<br>PlatformDecoder是不同平台解码器都应该实现的接口。只有两个基本方法：<br>1）decodeFromEncodedImage<br>2）decodeJPEGFromEncodedImage<br>DalvikPurgeableDecoder：是PlatformDecoder抽象实现类，实现了上面两个方法,用于Gingerbread版本以后。<br>decodeFromEncodedImage()方法：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">public</span> CloseableReference&lt;<span class="keyword">Bitmap&gt; </span>decodeFromEncodedImage(</span><br><span class="line">      final EncodedImage encodedImage,</span><br><span class="line">      <span class="keyword">Bitmap.Config </span><span class="keyword">bitmapConfig) </span>&#123;</span><br><span class="line"><span class="keyword">BitmapFactory.Options </span>options = getBitmapFactoryOptions(</span><br><span class="line">        encodedImage.getSampleSize(),</span><br><span class="line">        <span class="keyword">bitmapConfig);</span><br><span class="line"></span><span class="label">CloseableReference</span>&lt;PooledByteBuffer&gt; <span class="keyword">bytesRef </span>= encodedImage.getByteBufferRef()<span class="comment">;</span></span><br><span class="line">    Preconditions.checkNotNull(<span class="keyword">bytesRef);</span><br><span class="line"></span>    try &#123;</span><br><span class="line">      <span class="keyword">Bitmap </span><span class="keyword">bitmap </span>= decodeByteArrayAsPurgeable(<span class="keyword">bytesRef, </span>options)<span class="comment">;</span></span><br><span class="line">      return pinBitmap(<span class="keyword">bitmap);</span><br><span class="line"></span>    &#125; finally &#123;</span><br><span class="line">      CloseableReference.closeSafely(<span class="keyword">bytesRef);</span><br><span class="line"></span>    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>关于BitmapFactory.Options的设置：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> BitmapFactory.<span class="keyword">Options</span> getBitmapFactoryOptions(</span><br><span class="line">      <span class="keyword">int</span> sampleSize,</span><br><span class="line">      Bitmap.Config bitmapConfig) &#123;</span><br><span class="line">    BitmapFactory.<span class="keyword">Options</span> <span class="keyword">options</span> = <span class="keyword">new</span> BitmapFactory.<span class="keyword">Options</span>();</span><br><span class="line">    <span class="comment">//是否进行抖动处理</span></span><br><span class="line">    <span class="keyword">options</span>.inDither = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">//设置图片压缩质量参数，默认是Bitmap.Config.ARGB_8888</span></span><br><span class="line">    <span class="keyword">options</span>.inPreferredConfig = bitmapConfig;</span><br><span class="line">    <span class="comment">//将图片解码成一个可回收(purgeable)的bitmap,bitmap位于ashmem heap中。</span></span><br><span class="line">    <span class="keyword">options</span>.inPurgeable = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">//在LOLLIPOP忽略该字段，KITKAT及以下的版本和inPurgeable配合使用，如果inPurgeable字段是false则忽略，如果inPurgeable字段是true，inInputShareable 将决定bitmap是否能够共享一个指向数据源（inputstream, array, etc.）的引用，或者持有一份全拷贝（deep copy）</span></span><br><span class="line">    <span class="keyword">options</span>.inInputShareable = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">//缩放指数</span></span><br><span class="line">    <span class="keyword">options</span>.inSampleSize = sampleSize;</span><br><span class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB) &#123;</span><br><span class="line">      <span class="keyword">options</span>.inMutable = <span class="keyword">true</span>;  <span class="comment">// no known perf difference; allows postprocessing to work</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">options</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>pinBitmap()方法调用了nativePinBitmap()方法：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">static</span> void <span class="keyword">Bitmaps_pinBitmap(</span><br><span class="line"></span>    JNIEnv* env,</span><br><span class="line">    jclass clazz,</span><br><span class="line">    jobject <span class="keyword">bitmap) </span>&#123;</span><br><span class="line">  UNUSED(clazz)<span class="comment">;</span></span><br><span class="line">  int rc = <span class="keyword">AndroidBitmap_lockPixels(env, </span><span class="keyword">bitmap, </span><span class="number">0</span>)<span class="comment">;</span></span><br><span class="line">  <span class="preprocessor">if</span> (rc != <span class="keyword">ANDROID_BITMAP_RESULT_SUCCESS) </span>&#123;</span><br><span class="line">    safe_throw_exception(env, <span class="string">"Failed to pin Bitmap"</span>)<span class="comment">;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>实质上执行了AndroidBitmap_lockPixels操作。<br>关于lockPixels操作，ashmem的pin/unpin操作：<a href="https://code.facebook.com/posts/366199913563917/introducing-fresco-a-new-image-library-for-android/" target="_blank" rel="external">Introducing Fresco: A new image library for Android</a><br>GingerbreadPurgeableDecoder：继承自DalvikPurgeableDecoder，用于Gingerbread到 Jelly Bean的版本。把encoded bytes拷贝到MemoryFile（ashmem），之后再进行解码，完全不使用Java memory。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">memoryFile</span> = copyToMemoryFile(<span class="keyword">bytesRef, </span>inputLength, suffix)<span class="comment">;</span></span><br><span class="line"><span class="label">FileDescriptor</span> fd = getMemoryFileDescriptor(memoryFile)<span class="comment">;</span></span><br><span class="line"><span class="keyword">Bitmap </span><span class="keyword">bitmap </span>= <span class="keyword">BitmapFactory.decodeFileDescriptor(fd, </span>null, options)<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>KitKatPurgeableDecoder：继承自DalvikPurgeableDecoder，用于KitKat版本，用Java memory存储encoded images，用FlexByteArrayPool提供的CloseableReference<byte[]>代替MemoryFile（ashmem），之后再进行解码。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> Bitmap decodeByteArrayAsPurgeable(</span><br><span class="line">      CloseableReference&lt;PooledByteBuffer&gt; bytesRef,</span><br><span class="line">      BitmapFactory.<span class="keyword">Options</span> <span class="keyword">options</span>) &#123;</span><br><span class="line">    <span class="keyword">final</span> PooledByteBuffer pooledByteBuffer = bytesRef.get();</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> length = pooledByteBuffer.<span class="keyword">size</span>();</span><br><span class="line">    <span class="keyword">final</span> CloseableReference&lt;<span class="keyword">byte</span>[]&gt; encodedBytesArrayRef = mFlexByteArrayPool.get(length);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">final</span> <span class="keyword">byte</span>[] encodedBytesArray = encodedBytesArrayRef.get();</span><br><span class="line">      pooledByteBuffer.<span class="keyword">read</span>(<span class="number">0</span>, encodedBytesArray, <span class="number">0</span>, length);</span><br><span class="line">      Bitmap bitmap = BitmapFactory.decodeByteArray(</span><br><span class="line">          encodedBytesArray,</span><br><span class="line">          <span class="number">0</span>,</span><br><span class="line">          length,</span><br><span class="line">          <span class="keyword">options</span>);</span><br><span class="line">      <span class="keyword">return</span> Preconditions.checkNotNull(bitmap, <span class="string">"BitmapFactory returned null"</span>);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      CloseableReference.closeSafely(encodedBytesArrayRef);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></byte[]></p>
+<p>ArtDecoder继承自PlatformDecoder，用于Lollipop或者更高的版本，直接通过EncodedImage.getInputStream()方法获取到EncodedImage的流进行解码。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> CloseableReference&lt;Bitmap&gt; decodeFromEncodedImage(</span><br><span class="line">      EncodedImage encodedImage,</span><br><span class="line">      Bitmap.Config bitmapConfig) &#123;</span><br><span class="line">    <span class="keyword">final</span> BitmapFactory.<span class="keyword">Options</span> <span class="keyword">options</span> = getDecodeOptionsForStream(encodedImage, bitmapConfig);</span><br><span class="line">    <span class="keyword">boolean</span> retryOnFail=<span class="keyword">options</span>.inPreferredConfig != Bitmap.Config.ARGB_8888;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> decodeStaticImageFromStream(encodedImage.getInputStream(), <span class="keyword">options</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (RuntimeException re) &#123;</span><br><span class="line">      <span class="keyword">if</span> (retryOnFail) &#123;</span><br><span class="line">        <span class="keyword">return</span> decodeFromEncodedImage(encodedImage, Bitmap.Config.ARGB_8888);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">throw</span> re;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>关于decodeStaticImageFromStream()方法：<br>1）inBitmap和对象池（BitmapPool继承自BasePool，BasePool实现了Pool）<br>options.inBitmap设置复用的内存块，从而不需要重新给这个bitmap申请一块新的内存。<br>BitmapPool是bitmap对象池，返回相同大小（byte）的bitmap对象，从而使设置了options.inBitmap属性的bitmap对象复用这个内存空间。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Bitmap bitmapToReuse = mBitmapPool.<span class="keyword">get</span>(sizeInBytes);</span><br><span class="line">  <span class="keyword">if</span> (bitmapToReuse == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"BitmapPool.get returned null"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  options.inBitmap = bitmapToReuse;</span><br></pre></td></tr></table></figure></p>
+<p>2）options.inTempStorage是流解码的缓冲空间，官方建议16K。<br>mDecodeBuffers是 SynchronizedPool<bytebuffer>的对象，同样是对象池。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Bitmap </span>decodedBitmap<span class="comment">;</span></span><br><span class="line">   <span class="keyword">ByteBuffer </span><span class="keyword">byteBuffer </span>= mDecodeBuffers.acquire()<span class="comment">;</span></span><br><span class="line">   <span class="preprocessor">if</span> (<span class="keyword">byteBuffer </span>== null) &#123;</span><br><span class="line">     <span class="keyword">byteBuffer </span>= <span class="keyword">ByteBuffer.allocate(DECODE_BUFFER_SIZE);</span><br><span class="line"></span>   &#125;</span><br><span class="line">   try &#123;</span><br><span class="line">     options.inTempStorage = <span class="keyword">byteBuffer.array();</span><br><span class="line"></span>     decodedBitmap = <span class="keyword">BitmapFactory.decodeStream(inputStream, </span>null, options)<span class="comment">;</span></span><br></pre></td></tr></table></figure></bytebuffer></p>
+<p>这个很重要！<a href="https://www.youtube.com/watch?v=_ioFW3cyRV0&amp;index=17&amp;list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE" target="_blank" rel="external">关于对象池，inBitmap</a></p>
+<p>ResizeAndRotateProducer只处理JPEG图片的缩放和旋转（EXIF）。<br>主要代码如下：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">PooledByteBufferOutputStream</span> outputStream = mPooledByteBufferFactory.newOutputStream();</span><br><span class="line"><span class="type">int</span> numerator = getScaleNumerator(imageRequest, encodedImage);</span><br><span class="line"><span class="keyword">is</span> = encodedImage.getInputStream();</span><br><span class="line"><span class="type">JpegTranscoder</span>.transcodeJpeg(</span><br><span class="line">            <span class="keyword">is</span>,</span><br><span class="line">            outputStream,</span><br><span class="line">            getRotationAngle(imageRequest, encodedImage),</span><br><span class="line">            numerator,</span><br><span class="line">            <span class="type">DEFAULT_JPEG_QUALITY</span>);</span><br><span class="line"><span class="type">CloseableReference</span>&lt;<span class="type">PooledByteBuffer</span>&gt; <span class="keyword">ref</span> =</span><br><span class="line">            <span class="type">CloseableReference</span>.<span class="keyword">of</span>(outputStream.toByteBuffer());</span><br><span class="line">ret = new <span class="type">EncodedImage</span>(<span class="keyword">ref</span>);</span><br></pre></td></tr></table></figure></p>
+<p>JpegTranscoder位于nativecode文件夹是和native代码沟通的Java类，同样jni\imagepipeline含有JpegTranscoder.cpp文件。<br>transcodeJpeg()方法调用native的nativeTranscodeJpeg()方法，在JpegTranscoder.cpp里对应着JpegTranscoder_transcodeJpeg()方法。<br>这个方法的具体实现在jpeg_codec.cpp，该文件包含了jpeglib.h头文件，实际上是调用了libjpeg-turbo-1.3.1这个C++开源库实现的。<br>transcodeJpeg的五个参数分别是：<br>未解码图片的输入流，未解码图片的输出流，旋转角度，尺寸压缩比例参数，质量压缩比例参数。<br>其他图片类型如PNG，WEBP的相关处理也都是用到了其他的C++开源库实现的。</p>
+<p><a href="http://blog.csdn.net/sgwhp/article/details/49640611" target="_blank" rel="external">获取一张图片的完整过程</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2016/01/07/Fresco源码分析六/">Fresco源码分析六</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Firesoul 的个人博客">Firesoul</a></p>
+  <p><span>发布时间:</span>2016年01月07日 - 00时45分</p>
+  <p><span>最后更新:</span>2016年01月07日 - 00时46分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2016/01/07/Fresco源码分析六/" title="Fresco源码分析六">http://sibylfiresoul.github.io/2016/01/07/Fresco源码分析六/</a>
+    <span class="copy-path" data-clipboard-text="原文: http://sibylfiresoul.github.io/2016/01/07/Fresco源码分析六/　　作者: Firesoul" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/12/29/Fresco源码分析五/">
+        Fresco源码分析五
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+  if ($(".toc").length < 1) {
+    $("#toc").css("display","none");
+    $("#tocButton").css("display","none");
+    $(".switch-btn").css("display","block");
+    $(".switch-area").css("display","block");
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2015/12/29/Fresco源码分析五/" title="下一篇: Fresco源码分析五">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Firesoul
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
