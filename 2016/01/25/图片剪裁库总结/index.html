@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>about | Firesoul&#39;s Blog</title>
+  <title>图片剪裁库总结 | Firesoul&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Something in your eyes, whispers words of last good-bye.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://sibylfiresoul.github.io/about/index.html">
+  <meta name="description" content="图片剪裁库总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片剪裁库总结">
+<meta property="og:url" content="http://sibylfiresoul.github.io/2016/01/25/图片剪裁库总结/index.html">
 <meta property="og:site_name" content="Firesoul's Blog">
-<meta property="og:description" content="Something in your eyes, whispers words of last good-bye.">
-<meta property="og:updated_time" content="2015-12-16T08:32:29.709Z">
+<meta property="og:description" content="图片剪裁库总结">
+<meta property="og:updated_time" content="2016-01-25T06:51:56.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="Something in your eyes, whispers words of last good-bye.">
+<meta name="twitter:title" content="图片剪裁库总结">
+<meta name="twitter:description" content="图片剪裁库总结">
   
     <link rel="alternative" href="/atom.xml" title="Firesoul&#39;s Blog" type="application/atom+xml">
   
@@ -194,11 +194,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-图片剪裁库总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/about/index.html" class="article-date">
-  	<time datetime="2015-12-16T08:32:29.000Z" itemprop="datePublished">2015-12-16</time>
+      <a href="/2016/01/25/图片剪裁库总结/" class="article-date">
+  	<time datetime="2016-01-25T06:49:49.000Z" itemprop="datePublished">2016-01-25</time>
 </a>
     </div>
   
@@ -211,7 +211,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      图片剪裁库总结
     </h1>
   
 
@@ -219,8 +219,16 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
 
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yalantis/">yalantis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片剪裁/">图片剪裁</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+	</div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -228,53 +236,100 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-	.article-meta {
-		display: none;
-	}
-	#container .article .article-title {
-		padding-right: 0;
-	}
-	.article-header {
-		padding: 0;
-		padding-top: 26px;
-		border-left: none;
-		text-align: center;
-	}
-	.article-header:hover {
-		border-left: none;
-	}
-	.article-title {
-		font-size: 1.6em
-	}
-	.article-meta {
-		display: none;
-	}
-	.article-entry hr {
-		margin: 0;
-	}
-	#container .article-info-post.article-info {
-  	display: none;
-  	}
-	#container .article .article-title {
-	padding: 0;
-	}
-</style>
+        <p><a href="https://github.com/jdamcd/android-crop" target="_blank" rel="external">SoundCloud cropping library</a>库含有如下三点问题：<br>1）用户操作的是裁剪的区域而不是图片本身。<br>用户痛点是需要裁剪一个很小的区域时，在用户体验的角度来说会感到非常的纠结。产品就是解决用户的痛点，Instagram在用户体验上做出了很好的示范，移动剪裁区域截图的这种方式应该被淘汰掉。<br>2）不允许用户对图片做任何形式的旋转。<br>很多Android图片包含错误的EXIF信息，并且用户也希望使用随意旋转图片任何角度的功能。<br>3）截图区域的宽高比不能改变。</p>
+<p><a href="https://github.com/edmodo/cropper" target="_blank" rel="external">Edmodo Cropper</a>同样含有上述缺点，且1.0版本年代久远，属于上古时期的库，代码不够简洁，逻辑不够清晰，并在那个年代图片处理方式并没有现在这么先进。2.0版本代码重构后，解决了上述一些问题，但是在手势，旋转功能方面不够优秀。</p>
+<p><a href="https://github.com/lyft/scissors" target="_blank" rel="external">Scissors</a>库同样具有上述问题，虽然集成了一些优秀的图片处理框架如Picasso, Glide和Universal Image Loader，但是并没有什么卵用，并不具有更有用的特色功能。</p>
+<p> <a href="https://github.com/Yalantis/uCrop" target="_blank" rel="external">uCrop</a>在功能上支持放大缩小图片，旋转任意角度图片，支持修改剪裁框的长宽比例，在手势上支持单指滑动，双指放大缩小，双击屏幕放大图片，支持不同图片格式（PNG, JPEG, WEBP）和压缩质量（0 - 100），支持设置被剪裁图片和剪裁后图片的最大尺寸。</p>
+<p>作者会在后续版本添加诸如调色板等的新功能。</p>
+<p><a href="https://github.com/Yalantis/uCrop" target="_blank" rel="external">uCrop</a>在使用上只需要四步就可以完美集成到项目中。uCrop提供了拆箱即用的Activity，uCrop 使用builder模式进行初始化。</p>
+<p>其他类似库:<br><a href="https://github.com/pengjianbo/GalleryFinal" target="_blank" rel="external">GalleryFinal</a>自定义相册,实现了拍照，图片选择（单选/多选），裁剪（单/多裁剪），旋转，ImageLoader无绑定任由开发者选择，功能可配置，主题样式可配置。<br><a href="https://github.com/Skykai521/StickerCamera" target="_blank" rel="external">StickerCamera</a>一款集成了相机,图片裁剪,图片滤镜,给图片贴贴图打标签的APP。</p>
+<p><a href="https://yalantis.com/blog/introducing-ucrop-our-own-image-cropping-library-for-android/" target="_blank" rel="external">Introducing uCrop, Our Own Image Cropping Library for Android</a></p>
 
-
-          
-        
       
     </div>
     
   </div>
   
     
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2016/01/25/图片剪裁库总结/">图片剪裁库总结</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Firesoul 的个人博客">Firesoul</a></p>
+  <p><span>发布时间:</span>2016年01月25日 - 14时49分</p>
+  <p><span>最后更新:</span>2016年01月25日 - 14时51分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2016/01/25/图片剪裁库总结/" title="图片剪裁库总结">http://sibylfiresoul.github.io/2016/01/25/图片剪裁库总结/</a>
+    <span class="copy-path" data-clipboard-text="原文: http://sibylfiresoul.github.io/2016/01/25/图片剪裁库总结/　　作者: Firesoul" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
 
 
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/01/13/Kotlin学习资料/">
+        Kotlin学习资料
+      </a>
+    </div>
+  
+</nav>
 
   
 </article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+  if ($(".toc").length < 1) {
+    $("#toc").css("display","none");
+    $("#tocButton").css("display","none");
+    $(".switch-btn").css("display","block");
+    $(".switch-area").css("display","block");
+  }
+</script>
 
 
 <div class="share">
@@ -310,6 +365,17 @@
     </div>
 
 
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2016/01/13/Kotlin学习资料/" title="下一篇: Kotlin学习资料">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
 
 
     
@@ -320,7 +386,7 @@
         mathjax: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
